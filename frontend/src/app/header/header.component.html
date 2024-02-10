@@ -1,44 +1,57 @@
 <header class="w-full absolute z-10">
   <nav class="max-w-[1440px] mx-auto flex justify-between items-center sm:px-16 px-6 py-7">
-    <img
-      src="/assets/mybike-high-resolution-logo-transparent.svg"
-      alt="MyBike Logo"
-      class="object-contain w-[167px] h-[31px]"
-    />
-    <div class="flex gap-4 items-center">
-      <div class="hidden xl:block">
-        <input
-          type="text"
-          class=""
-          placeholder="Recherchez votre modèle..."
-        />
-      </div>
-      <div class="hidden xl:block">
-        <button class="button__white">Connexion</button>
-      </div>
-      <div class="xl:hidden"
-           [ngClass]="{'w-0 overflow-hidden': isMenuOpen, 'block': !isMenuOpen}"
-      >
-        <button
-          class="button__white"
-          (click)="toggleMenu()">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h16m-7 6h7"
+    <a routerLink="/">
+      <img
+        [src]="!isConnectionRoute ? 'assets/images/mybike-high-resolution-logo-transparent.svg' : 'assets/images/mybike-high-resolution-logo-white-transparent.svg'"
+        alt="MyBike Logo"
+        class="object-contain w-[167px] h-[31px]"
+      />
+    </a>
+    <ng-container *ngIf="!isConnectionRoute">
+      <div class="flex gap-4">
+        <div class="hidden xl:flex items-center">
+          <div class="relative">
+            <input
+              type="text"
+              class="header__input hover:box__shadow focus:box__shadow padding-x"
+              placeholder="Recherchez votre modèle..."
             />
-          </svg>
-        </button>
+            <img
+              src="assets/images/magnifying-glass-solid.svg"
+              alt="Magnifying glass"
+              class="absolute right-4 top-1/2 transform -translate-y-1/2 w-[24px] h-[24px]"
+            />
+          </div>
+        </div>
+        <div class="hidden xl:block">
+          <a routerLink="/signup-validation">
+            <button class="button__white">Connexion</button>
+          </a>
+        </div>
+        <div class="xl:hidden"
+             [ngClass]="{'w-0 overflow-hidden': isMenuOpen, 'block': !isMenuOpen}"
+        >
+          <button
+            class="button__blue"
+            (click)="toggleMenu()">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16m-7 6h7"
+              />
+            </svg>
+          </button>
+        </div>
       </div>
-    </div>
+    </ng-container>
   </nav>
 </header>
 
@@ -46,13 +59,13 @@
      class="fixed bg-primary-blue opacity-95 text-white h-[100vh] flex justify-center items-center text-[40px] tracking-[1px] z-10 overflow-hidden origin-left duration-500">
   <ul>
     <li class="hover:text__shadow duration-300 hover:translate-y-[-5px]">
-      <a href="/">Accueil</a>
+      <a routerLink="/" (click)="toggleMenu()">Accueil</a>
     </li>
     <li class="hover:text__shadow duration-300 hover:translate-y-[-5px]">
-      <a href="/">Connexion</a>
+      <a routerLink="/signup-validation" (click)="toggleMenu()">Connexion</a>
     </li>
     <li class="hover:text__shadow duration-300 hover:translate-y-[-5px]">
-      <a href="/">Compte</a>
+      <a routerLink="/" (click)="toggleMenu()">Compte</a>
     </li>
   </ul>
   <div>

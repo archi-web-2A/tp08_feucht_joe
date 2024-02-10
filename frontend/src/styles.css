@@ -42,8 +42,18 @@
   @apply daisy-btn bg-white hover:shadow-md hover:opacity-90 text-[16px] hover:bg-white rounded-[25px] text-primary-blue font-light px-10
 }
 
+.button__white__blue__border {
+  @apply daisy-btn border-[1px] hover:border-primary-blue border-primary-blue bg-white hover:shadow-md hover:opacity-90 text-[16px] hover:bg-white rounded-[25px] text-primary-blue font-light px-10
+}
+
 @layer utilities {
   .text__shadow {
     text-shadow: -3px 3px 0 black;
   }
+}
+
+@layer utilities {
+  .box__shadow {
+    -webkit-box-shadow: 6px 6px 0px -1px #000000;
+    box-shadow: 6px 6px 0px -3px #000000;  }
 }
