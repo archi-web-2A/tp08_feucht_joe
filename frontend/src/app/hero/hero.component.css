@@ -8,7 +8,7 @@
 }
 
 .hero__subtitle {
-  @apply text-[24px] text-black-100 font-light mt-5 xl:w-[70%];
+  @apply text-[24px] text-black-100 font-light mt-10 xl:w-[70%];
 }
 
 .hero__image-container {

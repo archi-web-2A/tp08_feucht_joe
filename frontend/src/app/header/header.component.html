@@ -5,9 +5,73 @@
       alt="MyBike Logo"
       class="object-contain w-[167px] h-[31px]"
     />
-    <div class="flex gap-10">
-      <p>Rechercher votre modèle...</p>
-      <button>Connexion</button>
+    <div class="flex gap-4 items-center">
+      <div class="hidden xl:block">
+        <input
+          type="text"
+          class=""
+          placeholder="Recherchez votre modèle..."
+        />
+      </div>
+      <div class="hidden xl:block">
+        <button class="button__white">Connexion</button>
+      </div>
+      <div class="xl:hidden"
+           [ngClass]="{'w-0 overflow-hidden': isMenuOpen, 'block': !isMenuOpen}"
+      >
+        <button
+          class="button__white"
+          (click)="toggleMenu()">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16m-7 6h7"
+            />
+          </svg>
+        </button>
+      </div>
     </div>
   </nav>
 </header>
+
+<div [ngClass]="{'w-0': !isMenuOpen, 'w-[100%]': isMenuOpen}"
+     class="fixed bg-primary-blue opacity-95 text-white h-[100vh] flex justify-center items-center text-[40px] tracking-[1px] z-10 overflow-hidden origin-left duration-500">
+  <ul>
+    <li class="hover:text__shadow duration-300 hover:translate-y-[-5px]">
+      <a href="/">Accueil</a>
+    </li>
+    <li class="hover:text__shadow duration-300 hover:translate-y-[-5px]">
+      <a href="/">Connexion</a>
+    </li>
+    <li class="hover:text__shadow duration-300 hover:translate-y-[-5px]">
+      <a href="/">Compte</a>
+    </li>
+  </ul>
+  <div>
+    <!-- close button -->
+    <button class="absolute top-[30px] right-[7vh]" (click)="toggleMenu()">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-10 w-10"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M6 18L18 6M6 6l12 12"
+        />
+      </svg>
+    </button>
+  </div>
+</div>

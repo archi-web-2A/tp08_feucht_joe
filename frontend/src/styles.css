@@ -33,3 +33,17 @@
 .flex-between {
   @apply flex justify-between items-center;
 }
+
+.button__blue {
+  @apply daisy-btn bg-primary-blue hover:shadow-md hover:opacity-90 text-[16px] hover:bg-primary-blue rounded-[25px] text-white font-light px-10
+}
+
+.button__white {
+  @apply daisy-btn bg-white hover:shadow-md hover:opacity-90 text-[16px] hover:bg-white rounded-[25px] text-primary-blue font-light px-10
+}
+
+@layer utilities {
+  .text__shadow {
+    text-shadow: -3px 3px 0 black;
+  }
+}
