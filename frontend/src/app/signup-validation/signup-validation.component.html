@@ -1,31 +1,30 @@
-<section class="relative flex min-h-screen flex-col justify-center overflow-hidden bg-gray-50 py-6 sm:py-12">
+<section class="relative flex min-h-screen flex-col justify-center overflow-hidden">
   <div class="absolute inset-0 bg-[url(/assets/images/pattern-background-desktop.svg)] bg-no-repeat bg-cover bottom-[35%]"></div>
-  <div class="relative bg-white pt-8 pb-8 shadow-xl ring-1 ring-gray-900/5 mx-auto max-w-lg rounded-lg px-10 mt-28">
+  <div class="relative bg-white pt-8 pb-8 shadow-xl ring-1 ring-gray-900/5 sm:mx-auto mx-4 max-w-xl rounded-lg px-10 mt-16">
     <img src="assets/images/4945034_46480.svg" alt="logo" class="w-36 mx-auto mb-4" />
-    <h1 class="text-2xl font-extrabold my-2 text-center">Bienvenue parmi nous, <span class="text-primary-blue">{{ name }}</span></h1>
+    <h1 class="text-2xl font-extrabold my-2 text-center">Bienvenue parmi nous, <span class="text-primary-blue">{{ firstName }}</span></h1>
     <p class="text-sm text-center mb-5">Récapitulatif de la création de compte</p>
 
     <!-- Input Fields -->
     <div class="grid grid-cols-2 gap-2">
-      <input type="text" class="daisy-input daisy-input-bordered col-span-1" disabled [placeholder]="name" />
-      <input type="text" class="daisy-input daisy-input-bordered col-span-1" disabled placeholder="FEUCHT">
-      <input type="text" class="daisy-input daisy-input-bordered col-span-1" disabled placeholder="zzz@gmail.com" />
-      <input type="text" class="daisy-input daisy-input-bordered col-span-1" disabled placeholder="0601010101" />
-      <input type="text" class="daisy-input daisy-input-bordered col-span-1" disabled placeholder="Homme" />
-      <input type="text" class="daisy-input daisy-input-bordered col-span-1" disabled placeholder="1/10/2000" />
+      <input type="text" class="daisy-input daisy-input-bordered col-span-1" disabled [placeholder]="firstName" />
+      <input type="text" class="daisy-input daisy-input-bordered col-span-1" disabled [placeholder]="lastName">
+      <input type="text" class="daisy-input daisy-input-bordered col-span-1" disabled [placeholder]="email" />
+      <input type="text" class="daisy-input daisy-input-bordered col-span-1" disabled [placeholder]="phoneNumber" />
+      <input type="text" class="daisy-input daisy-input-bordered col-span-1" disabled [placeholder]="gender" />
+      <input type="text" class="daisy-input daisy-input-bordered col-span-1" disabled [placeholder]="birthDate" />
     </div>
     <h2 class="text-l font-bold text-left py-3">Adresse</h2>
     <div class="grid grid-cols-2 gap-2">
-      <input type="text" class="daisy-input daisy-input-bordered col-span-2" disabled placeholder="1 rue de Macron" />
-      <input type="text" class="daisy-input daisy-input-bordered col-span-1" disabled placeholder="Paris" />
-      <input type="text" class="daisy-input daisy-input-bordered col-span-1" disabled placeholder="75001" />
+      <input type="text" class="daisy-input daisy-input-bordered col-span-2" disabled [placeholder]="address" />
+      <input type="text" class="daisy-input daisy-input-bordered col-span-1" disabled [placeholder]="city" />
+      <input type="text" class="daisy-input daisy-input-bordered col-span-1" disabled [placeholder]="postalCode" />
     </div>
-    <div class="flex justify-center gap-10">
-      <button class="button__white__blue__border px-10 mt-10">Mon compte</button>
+    <div class="flex justify-around xl:gap-0 gap-2">
+      <button class="button__white__blue__border mt-10">Mon compte</button>
       <a routerLink="/">
-        <button class="button__blue px-10 mt-10">Retour à l'accueil</button>
+        <button class="button__blue mt-10">Accueil</button>
       </a>
     </div>
   </div>
-
 </section>

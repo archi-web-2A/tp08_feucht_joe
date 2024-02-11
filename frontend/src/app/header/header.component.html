@@ -1,8 +1,8 @@
 <header class="w-full absolute z-10">
-  <nav class="max-w-[1440px] mx-auto flex justify-between items-center sm:px-16 px-6 py-7">
-    <a routerLink="/">
+  <nav class="max-w-[1440px] mx-auto flex justify-between items-center sm:px-16 px-6 py-8">
+    <a routerLink="/" class="py-[10px]">
       <img
-        [src]="!isConnectionRoute ? 'assets/images/mybike-high-resolution-logo-transparent.svg' : 'assets/images/mybike-high-resolution-logo-white-transparent.svg'"
+        src='assets/images/mybike-high-resolution-logo-transparent.svg'
         alt="MyBike Logo"
         class="object-contain w-[167px] h-[31px]"
       />
@@ -24,16 +24,16 @@
           </div>
         </div>
         <div class="hidden xl:block">
-          <a routerLink="/signup-validation">
+          <a routerLink="/sign-forms">
             <button class="button__white">Connexion</button>
           </a>
         </div>
         <div class="xl:hidden"
-             [ngClass]="{'w-0 overflow-hidden': isMenuOpen, 'block': !isMenuOpen}"
+             [ngClass]="!isMenuOpen ? 'block' : 'w-0 overflow-hidden'"
         >
           <button
             class="button__blue"
-            (click)="toggleMenu()">
+            (click)="onClickHamburgerButton()">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-6 w-6"
@@ -55,22 +55,22 @@
   </nav>
 </header>
 
-<div [ngClass]="{'w-0': !isMenuOpen, 'w-[100%]': isMenuOpen}"
+<div [ngClass]="isMenuOpen ? 'w-[100%]' : 'w-0'"
      class="fixed bg-primary-blue opacity-95 text-white h-[100vh] flex justify-center items-center text-[40px] tracking-[1px] z-10 overflow-hidden origin-left duration-500">
   <ul>
     <li class="hover:text__shadow duration-300 hover:translate-y-[-5px]">
-      <a routerLink="/" (click)="toggleMenu()">Accueil</a>
+      <a routerLink="/">Accueil</a>
     </li>
     <li class="hover:text__shadow duration-300 hover:translate-y-[-5px]">
-      <a routerLink="/signup-validation" (click)="toggleMenu()">Connexion</a>
+      <a routerLink="/sign-forms">Connexion</a>
     </li>
     <li class="hover:text__shadow duration-300 hover:translate-y-[-5px]">
-      <a routerLink="/" (click)="toggleMenu()">Compte</a>
+      <a routerLink="/">Compte</a>
     </li>
   </ul>
   <div>
     <!-- close button -->
-    <button class="absolute top-[30px] right-[7vh]" (click)="toggleMenu()">
+    <button class="absolute top-[30px] right-[7vh]" (click)="onClickHamburgerButton()">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-10 w-10"

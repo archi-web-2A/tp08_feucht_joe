@@ -1,0 +1,3 @@
+.default__input {
+  @apply daisy-input rounded-[20px] bg-gray-100 text-primary-blue placeholder-black border-transparent placeholder-opacity-60 focus:border-transparent focus:outline-0
+}

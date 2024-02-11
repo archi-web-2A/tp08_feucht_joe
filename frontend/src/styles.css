@@ -35,11 +35,11 @@
 }
 
 .button__blue {
-  @apply daisy-btn bg-primary-blue hover:shadow-md hover:opacity-90 text-[16px] hover:bg-primary-blue rounded-[25px] text-white font-light px-10
+  @apply daisy-btn bg-primary-blue hover:shadow-lg hover:opacity-90 text-[16px] hover:bg-primary-blue rounded-[25px] text-white font-light px-10
 }
 
 .button__white {
-  @apply daisy-btn bg-white hover:shadow-md hover:opacity-90 text-[16px] hover:bg-white rounded-[25px] text-primary-blue font-light px-10
+  @apply daisy-btn bg-white hover:shadow-lg hover:opacity-90 text-[16px] hover:bg-white rounded-[25px] text-primary-blue font-light px-10
 }
 
 .button__white__blue__border {

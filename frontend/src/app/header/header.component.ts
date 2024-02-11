@@ -14,17 +14,19 @@ export class HeaderComponent {
   isConnectionRoute = false;
 
   constructor(private router: Router) {
-    this.checkConnectionRoute();
+    this.checkRoutes();
   }
 
-  toggleMenu() {
+  onClickHamburgerButton() {
     this.isMenuOpen = !this.isMenuOpen;
   }
 
-  checkConnectionRoute() {
+  checkRoutes() {
     this.router.events.subscribe((event) => {
+      // Disable the hamburger menu when the user is on another page
+      this.isMenuOpen = false;
       if (event instanceof NavigationEnd) {
-        this.isConnectionRoute = event.url === '/signup-validation';
+        this.isConnectionRoute = event.url === '/sign-forms';
       }
     });
   }

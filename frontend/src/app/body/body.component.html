@@ -1,9 +1,0 @@
-<p>body de {{ user }}</p>
-
-<button class="btn-submit" [disabled]="!valid" (click)="click()">Bouton : {{ message }}</button>
-
-<input [(ngModel)]="user"/> <!-- data binding bidirectionnel -->
-
-<app-child [nomChild] = "user"></app-child> <!-- communication inter composants /// parent => child -->
-
-<app-child (change) = "logPrenomNom($event)"></app-child> <!-- communication inter composants /// child => parent -->
