@@ -48,7 +48,7 @@
 
 @layer utilities {
   .text__shadow {
-    text-shadow: -3px 3px 0 black;
+    text-shadow: -3px 3px 0 #525252;
   }
 }
 
