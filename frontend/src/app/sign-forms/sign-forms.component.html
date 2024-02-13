@@ -1,88 +1,82 @@
-  <section class="relative flex min-h-screen flex-col justify-center overflow-hidden py-[7rem]">
-    <div class="relative w-4/5 bg-white py-8 shadow-xl ring-1 ring-gray-900/5 sm:mx-auto mx-4 max-w-screen-xl rounded-lg px-10">
-      <div class="flex items-center">
-        <div class="flex flex-col basis-1/3 items-center gap-3">
-          <h1 class="text-2xl font-extrabold">Connexion</h1>
-          <div class="flex gap-4">
-            <a href="/sign-forms">
-              <img
-                src="assets/images/google_logo.svg"
-                alt="Google logo"
-                class="object-contain w-[35px] h-[35px]"
-              />
-            </a>
-            <a href="/sign-forms">
-              <img
-                src="assets/images/facebook_logo.svg"
-                alt="Facebook logo"
-                class="object-contain w-[35px] h-[35px]"
-              />
-            </a>
-          </div>
-          <p class="text-sm text-center">ou connectez vous avec votre compte</p>
-          <form class="flex flex-col gap-3 items-center" [formGroup]="signinForm" (ngSubmit)="onSubmitSignin()">
-            <input type="text" class="default__input" placeholder="Email" formControlName="email" />
-            <p class="text-[12px] pl-3 text-red-500 font-bold self-start" *ngIf="signinInfo.email?.invalid && signinInfo.email?.dirty">
-              Email valide requis
-            </p>
-            <input type="text" class="default__input" placeholder="Mot de passe" formControlName="password" />
-            <p class="text-[12px] pl-3 text-red-500 font-bold self-start" *ngIf="signinInfo.password?.invalid && signinInfo.password?.dirty" >
-              Mot de passe valide requis
-            </p>
-            <div class="flex items-center gap-2">
-              <input type="checkbox" class="daisy-checkbox daisy-checkbox-primary [--chkfg:white]" />
-              <p class="text-[12px] font-bold">Restez connecté</p>
-            </div>
-            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
-              <p class="text-[12px] font-bold">Mot de passe oublié ?</p>
-            </a>
-            <button class="button__blue">Connexion</button>
-          </form>
+<section class="relative flex min-h-screen flex-col justify-center overflow-hidden py-[7rem]">
+  <div class="relative w-4/5 bg-white py-8 shadow-xl ring-1 ring-gray-900/5 sm:mx-auto mx-4 max-w-screen-xl rounded-lg px-10">
+    <div class="flex items-center">
+      <div class="flex flex-col basis-1/3 items-center gap-3">
+        <h1 class="text-2xl font-extrabold">Connexion</h1>
+        <div class="flex gap-4">
+          <a href="/sign-forms">
+            <img
+              src="assets/images/google_logo.svg"
+              alt="Google logo"
+              class="object-contain w-[35px] h-[35px]"
+            />
+          </a>
+          <a href="/sign-forms">
+            <img
+              src="assets/images/facebook_logo.svg"
+              alt="Facebook logo"
+              class="object-contain w-[35px] h-[35px]"
+            />
+          </a>
         </div>
-        <div class="flex flex-col basis-2/3 items-center gap-3">
-          <h1 class="text-2xl font-extrabold">Inscription</h1>
-          <div class="flex gap-4">
-            <a href="/sign-forms">
-              <img
-                src="assets/images/google_logo.svg"
-                alt="Google logo"
-                class="object-contain w-[35px] h-[35px]"
-              />
-            </a>
-            <a href="/sign-forms">
-              <img
-                src="assets/images/facebook_logo.svg"
-                alt="Facebook logo"
-                class="object-contain w-[35px] h-[35px]"
-              />
-            </a>
+        <p class="text-sm text-center">ou connectez vous avec votre compte</p>
+        <form class="flex flex-col gap-3 items-center" [formGroup]="signinForm" (ngSubmit)="onSubmitSignin()">
+          <app-custom-input [control]="signinInfo.email" placeholder="Email" errorMessage="Email valide requis"></app-custom-input>
+          <app-custom-input [control]="signinInfo.password" placeholder="Mot de passe" errorMessage="Mot de passe valide requis"></app-custom-input>
+          <div class="flex items-center gap-2">
+            <input type="checkbox" class="daisy-checkbox daisy-checkbox-primary [--chkfg:white]" />
+            <p class="text-[12px] font-bold">Restez connecté</p>
           </div>
-          <p class="text-sm text-center">ou inscrivez-vous à partir de votre email</p>
-          <!-- Input Fields -->
-          <form class="flex flex-col gap-3 items-center" [formGroup]="signupForm" (ngSubmit)="onSubmitSignup()">
-            <div class="grid grid-cols-2 gap-2">
-              <input type="text" class="default__input col-span-1" placeholder="Prénom" formControlName="firstName" />
-              <input type="text" class="default__input col-span-1" placeholder="Nom" formControlName="lastName" />
-              <input type="text" class="default__input col-span-1" placeholder="Email" formControlName="email" />
-              <input type="text" class="default__input col-span-1" placeholder="Numéro de téléphone" formControlName="phoneNumber" />
-              <select type="text" class="default__select col-span-1" formControlName="gender">
-                <option value="" disabled selected>Sexe</option>
-                <option>Homme</option>
-                <option>Femme</option>
-              </select>
-              <input type="text" class="default__input col-span-1" placeholder="Date de naissance" formControlName="birthDate" />
-              <input type="text" class="default__input col-span-2" placeholder="Mot de passe" formControlName="password" />
-              <input type="text" class="default__input col-span-2" placeholder="Confirmer le mot de passe" formControlName="passwordConfirmation" />
-            </div>
-            <h2 class="text-l font-bold text-left self-start">Adresse</h2>
-            <div class="grid grid-cols-2 gap-2">
-              <input type="text" class="default__input col-span-2" placeholder="Numéro de voie et voie" formControlName="location" />
-              <input type="text" class="default__input col-span-1" placeholder="Ville" formControlName="city" />
-              <input type="text" class="default__input col-span-1" placeholder="Code postal" formControlName="postalCode" />
-            </div>
-            <button class="button__blue">Inscription</button>
-          </form>
+          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+            <p class="text-[12px] font-bold">Mot de passe oublié ?</p>
+          </a>
+          <button class="button__blue">Connexion</button>
+        </form>
+      </div>
+      <div class="flex flex-col basis-2/3 items-center gap-3">
+        <h1 class="text-2xl font-extrabold">Inscription</h1>
+        <div class="flex gap-4">
+          <a href="/sign-forms">
+            <img
+              src="assets/images/google_logo.svg"
+              alt="Google logo"
+              class="object-contain w-[35px] h-[35px]"
+            />
+          </a>
+          <a href="/sign-forms">
+            <img
+              src="assets/images/facebook_logo.svg"
+              alt="Facebook logo"
+              class="object-contain w-[35px] h-[35px]"
+            />
+          </a>
         </div>
+        <p class="text-sm text-center">ou inscrivez-vous à partir de votre email</p>
+        <!-- Input Fields -->
+        <form class="flex flex-col gap-3 items-center" [formGroup]="signupForm" (ngSubmit)="onSubmitSignup()">
+          <div class="grid grid-cols-2 gap-2">
+            <app-custom-input [control]="signupInfo.firstName" placeholder="Prénom" errorMessage="Prénom requis"></app-custom-input>
+            <app-custom-input [control]="signupInfo.lastName" placeholder="Nom" errorMessage="Nom requis"></app-custom-input>
+            <app-custom-input [control]="signupInfo.email" placeholder="Email" errorMessage="Email valide requis"></app-custom-input>
+            <app-custom-input [control]="signupInfo.phoneNumber" placeholder="Numéro de téléphone" errorMessage="Numéro de téléphone valide requis"></app-custom-input>
+            <select class="default__select" formControlName="gender">
+              <option value="" disabled selected>Sexe</option>
+              <option>Homme</option>
+              <option>Femme</option>
+            </select>
+            <app-custom-input [control]="signupInfo.birthDate" placeholder="Date de naissance" errorMessage="Date de naissance valide requise"></app-custom-input>
+            <app-custom-input class="grid col-span-2" [control]="signupInfo.password" placeholder="Mot de passe" errorMessage="Mot de passe valide requis"></app-custom-input>
+            <app-custom-input class="grid col-span-2" [control]="signupInfo.passwordConfirmation" placeholder="Confirmer le mot de passe" errorMessage="Mot de passe valide requis"></app-custom-input>
+          </div>
+          <h2 class="text-l font-bold text-left self-start">Adresse</h2>
+          <div class="grid grid-cols-2 gap-2">
+            <app-custom-input class="grid col-span-2" [control]="signupInfo.location" placeholder="Numéro de voie et voie" errorMessage="Numéro de voie et voie requis"></app-custom-input>
+            <app-custom-input [control]="signupInfo.city" placeholder="Ville" errorMessage="Ville requise"></app-custom-input>
+            <app-custom-input [control]="signupInfo.postalCode" placeholder="Code postal" errorMessage="Code postal requis"></app-custom-input>
+          </div>
+          <button class="button__blue">Inscription</button>
+        </form>
       </div>
     </div>
-  </section>
+  </div>
+</section>

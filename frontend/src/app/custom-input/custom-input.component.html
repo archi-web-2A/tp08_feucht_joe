@@ -1,0 +1,4 @@
+<input type="text" class="default__input" [placeholder]="placeholder" [formControl]="control"/>
+<div class="daisy-label" *ngIf="control.invalid && control.dirty">
+  <span class="daisy-label-text-alt text-red-500 text-xs">{{ errorMessage }}</span>
+</div>

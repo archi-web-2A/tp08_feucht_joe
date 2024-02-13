@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from "@angular/common";
 import {RouterLink} from "@angular/router";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
+import {CustomInputComponent} from "../custom-input/custom-input.component";
 
 @Component({
   selector: 'app-sign-forms',
@@ -9,7 +10,8 @@ import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/
   imports: [
     RouterLink,
     ReactiveFormsModule,
-    CommonModule
+    CommonModule,
+    CustomInputComponent,
   ],
   templateUrl: './sign-forms.component.html',
   styleUrl: './sign-forms.component.css'
@@ -35,8 +37,11 @@ export class SignFormsComponent {
   })
 
   get signinInfo() {
-    console.log(this.signinForm.controls);
     return this.signinForm.controls;
+  }
+
+  get signupInfo() {
+    return this.signupForm.controls;
   }
 
   onSubmitSignin() {
