@@ -3,5 +3,5 @@
 }
 
 .default__select {
-  @apply daisy-select text-[16px] rounded-[20px] bg-gray-100 text-black text-opacity-60  border-transparent placeholder-opacity-60 focus:border-transparent focus:outline-0;
+  @apply daisy-select text-[16px] rounded-[20px] bg-gray-100 text-black text-opacity-60 border-transparent placeholder-opacity-60 focus:border-transparent focus:outline-0;
 }
