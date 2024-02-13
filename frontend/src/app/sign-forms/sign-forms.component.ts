@@ -16,21 +16,34 @@ import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/
 })
 export class SignFormsComponent {
   signinForm = new FormGroup({
-    email: new FormControl('', Validators.required),
+    email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', Validators.required),
   })
 
   signupForm = new FormGroup({
+    firstName: new FormControl('', Validators.required),
+    lastName: new FormControl('', Validators.required),
     email: new FormControl('', Validators.required),
-    password: new FormControl('', Validators.minLength(4)),
-    confirmPassword: new FormControl('', Validators.minLength(4)),
+    phoneNumber: new FormControl('', Validators.required),
+    gender: new FormControl('', Validators.required),
+    birthDate: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required),
+    passwordConfirmation: new FormControl('', Validators.required),
+    location: new FormControl('', Validators.required),
+    city: new FormControl('', Validators.required),
+    postalCode: new FormControl('', Validators.required),
   })
 
-  get email() {
-    return this.signupForm.get('email');
+  get signinInfo() {
+    console.log(this.signinForm.controls);
+    return this.signinForm.controls;
   }
 
   onSubmitSignin() {
+
+  }
+
+  onSubmitSignup() {
 
   }
 

@@ -11,7 +11,8 @@ import {NavigationEnd, Router, RouterLink, RouterLinkActive} from "@angular/rout
 })
 export class HeaderComponent {
   isMenuOpen = false;
-  isConnectionRoute = false;
+  isSignForms= false;
+  isSignupValidation = false;
 
   constructor(private router: Router) {
     this.checkRoutes();
@@ -23,10 +24,10 @@ export class HeaderComponent {
 
   checkRoutes() {
     this.router.events.subscribe((event) => {
-      // Disable the hamburger menu when the user is on another page
       this.isMenuOpen = false;
       if (event instanceof NavigationEnd) {
-        this.isConnectionRoute = event.url === '/sign-forms';
+        this.isSignForms = event.url === '/sign-forms';
+        this.isSignupValidation = event.url === '/signup-validation';
       }
     });
   }

@@ -2,12 +2,12 @@
   <nav class="max-w-[1440px] mx-auto flex justify-between items-center sm:px-16 px-6 py-8">
     <a routerLink="/" class="py-[10px]">
       <img
-        src='assets/images/mybike-high-resolution-logo-transparent.svg'
+        [src]="isSignupValidation ? 'assets/images/mybike-high-resolution-logo-white-transparent.svg' : 'assets/images/mybike-high-resolution-logo-transparent.svg'"
         alt="MyBike Logo"
         class="object-contain w-[167px] h-[31px]"
       />
     </a>
-    <ng-container *ngIf="!isConnectionRoute">
+    <ng-container *ngIf="!(isSignForms || isSignupValidation)">
       <div class="flex gap-4">
         <div class="hidden xl:flex items-center">
           <div class="relative">
