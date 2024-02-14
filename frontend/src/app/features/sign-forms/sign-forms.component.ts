@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { CommonModule } from "@angular/common";
 import {Router, RouterLink} from "@angular/router";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {CustomInputComponent} from "../custom-input/custom-input.component";
-import { UserService } from "../user.service";
-import { User } from "../user";
+import {CustomInputComponent} from "../../shared/components/custom-input/custom-input.component";
+import { UserService } from "../../core/services/user.service";
+import { User } from "../../core/models/user";
 
 @Component({
   selector: 'app-sign-forms',

@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
-import { HeroComponent } from "./hero/hero.component";
-import { SignFormsComponent } from "./sign-forms/sign-forms.component";
-import { SignupValidationComponent } from "./signup-validation/signup-validation.component";
+import { HeroComponent } from "./features/hero/hero.component";
+import { SignFormsComponent } from "./features/sign-forms/sign-forms.component";
+import { SignupValidationComponent } from "./features/sign-forms/signup-validation/signup-validation.component";
 
 export const routes: Routes = [
   { path: '', component: HeroComponent },
