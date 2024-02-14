@@ -4,6 +4,7 @@ import {Router, RouterLink} from "@angular/router";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {CustomInputComponent} from "../custom-input/custom-input.component";
 import { UserService } from "../user.service";
+import { User } from "../user";
 
 @Component({
   selector: 'app-sign-forms',
@@ -43,8 +44,24 @@ export class SignFormsComponent {
   onSubmitSignup() {
     this.markFormGroupDirty(this.signupForm);
     if(this.signupForm.valid) {
-      this.userService.createUser(this.signupForm.value);
+      let user = this.convertFormGroupToUser(this.signupForm);
+      this.userService.createUser(user);
       this.router.navigate(['/signup-validation']);
+    }
+  }
+
+  convertFormGroupToUser(form: FormGroup): User {
+    return {
+      firstName: form.value.firstName,
+      lastName: form.value.lastName,
+      email: form.value.email,
+      phoneNumber: form.value.phoneNumber,
+      gender: form.value.gender,
+      birthDate: form.value.birthDate,
+      location: form.value.location,
+      city: form.value.city,
+      postalCode: form.value.postalCode,
+      password: form.value.password,
     }
   }
 
