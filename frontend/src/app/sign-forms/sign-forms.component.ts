@@ -45,11 +45,9 @@ export class SignFormsComponent {
   }
 
   onSubmitSignin() {
-
   }
 
   onSubmitSignup() {
-
   }
 
 }
