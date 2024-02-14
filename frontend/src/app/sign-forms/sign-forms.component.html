@@ -62,14 +62,19 @@
             <app-custom-input class="grid sm:col-span-1 col-span-2" [control]="signupInfo.lastName" placeholder="Nom" errorMessage="Nom requis"></app-custom-input>
             <app-custom-input class="grid sm:col-span-1 col-span-2" [control]="signupInfo.email" placeholder="Email" errorMessage="Email valide requis"></app-custom-input>
             <app-custom-input class="grid sm:col-span-1 col-span-2" [control]="signupInfo.phoneNumber" placeholder="Numéro de téléphone" errorMessage="Numéro de téléphone valide requis"></app-custom-input>
-            <select class="default__select sm:col-span-1 col-span-2" formControlName="gender">
-              <option value="" disabled selected>Sexe</option>
-              <option class="text-primary-blue">Homme</option>
-              <option class="text-primary-blue">Femme</option>
-            </select>
+            <div class="flex flex-col gap-2">
+              <select class="default__select sm:col-span-1 col-span-2" formControlName="gender">
+                <option value="" disabled selected>Sexe</option>
+                <option class="text-primary-blue">Homme</option>
+                <option class="text-primary-blue">Femme</option>
+              </select>
+              <span class="daisy-label-text-alt text-red-500 text-xs" *ngIf="signupForm.controls.gender?.invalid && signupForm.controls.gender?.dirty">Sexe requis</span>
+            </div>
+
+
             <app-custom-input class="grid sm:col-span-1 col-span-2" [control]="signupInfo.birthDate" placeholder="Date de naissance" errorMessage="Date de naissance valide requise"></app-custom-input>
             <app-custom-input class="grid col-span-2" [control]="signupInfo.password" placeholder="Mot de passe" errorMessage="Mot de passe valide requis"></app-custom-input>
-            <app-custom-input class="grid col-span-2" [control]="signupInfo.passwordConfirmation" placeholder="Confirmer le mot de passe" errorMessage="Mot de passe valide requis"></app-custom-input>
+            <app-custom-input class="grid col-span-2" [control]="signupInfo.passwordConfirmation" placeholder="Confirmer le mot de passe" errorMessage="Confirmation de mot de passe valide requis"></app-custom-input>
           </div>
           <h2 class="text-l font-bold text-left self-start">Adresse</h2>
           <div class="grid grid-cols-2 gap-2">

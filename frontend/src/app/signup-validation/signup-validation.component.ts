@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {RouterLink} from "@angular/router";
-import {first} from "rxjs";
+import { UserService } from "../user.service";
+
 
 @Component({
   selector: 'app-signup-validation',
@@ -12,13 +13,26 @@ import {first} from "rxjs";
   styleUrl: './signup-validation.component.css'
 })
 export class SignupValidationComponent {
-  firstName = 'Joé';
-  lastName = 'Feucht';
-  email = 'eren.yeager@gmail.com';
-  phoneNumber = '0612345678';
-  gender = 'Homme';
-  birthDate = '1999-12-31';
-  address = '1 rue de la paix';
-  city = 'Strasbourg';
-  postalCode = '67000';
+  firstName: string;
+  lastName: string;
+  email: string;
+  phoneNumber: string;
+  gender: string;
+  birthDate: string;
+  location: string;
+  city: string;
+  postalCode: string;
+
+  constructor(private formDataService: UserService) {
+    const user = this.formDataService.getUser();
+    this.firstName = user.firstName;
+    this.lastName = user.lastName;
+    this.email = user.email;
+    this.phoneNumber = user.phoneNumber;
+    this.gender = user.gender;
+    this.birthDate = user.birthDate;
+    this.location = user.location;
+    this.city = user.city;
+    this.postalCode = user.postalCode;
+  }
 }
