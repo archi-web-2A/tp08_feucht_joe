@@ -10,13 +10,15 @@ import {CommonModule} from "@angular/common";
   styleUrl: './custom-input.component.css'
 })
 export class CustomInputComponent {
-  constructor() {
-    this.errorMessage = '';
-    this.placeholder = '';
-    this.control = new FormControl();
-  }
-
   @Input() control: FormControl;
   @Input() placeholder: string;
-  @Input() errorMessage: string;
+  @Input() inputIcon: string;
+
+  constructor() {
+    this.control = new FormControl();
+    this.placeholder = '';
+    this.inputIcon = '';
+  }
+
+
 }

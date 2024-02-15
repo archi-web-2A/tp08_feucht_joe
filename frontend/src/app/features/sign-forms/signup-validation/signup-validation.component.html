@@ -6,19 +6,19 @@
     <p class="text-sm text-center mb-5">Récapitulatif de la création de compte</p>
 
     <!-- Input Fields -->
-    <div class="grid grid-cols-2 gap-2">
-      <input type="text" class="daisy-input daisy-input-bordered col-span-1" disabled [placeholder]="firstName" />
-      <input type="text" class="daisy-input daisy-input-bordered col-span-1" disabled [placeholder]="lastName">
-      <input type="text" class="daisy-input daisy-input-bordered col-span-1" disabled [placeholder]="email" />
-      <input type="text" class="daisy-input daisy-input-bordered col-span-1" disabled [placeholder]="phoneNumber" />
-      <input type="text" class="daisy-input daisy-input-bordered col-span-1" disabled [placeholder]="gender" />
-      <input type="text" class="daisy-input daisy-input-bordered col-span-1" disabled [placeholder]="birthDate" />
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+      <app-custom-disabled-input [placeholder]="firstName" inputIcon="user-solid"></app-custom-disabled-input>
+      <app-custom-disabled-input [placeholder]="lastName" inputIcon="user-solid"></app-custom-disabled-input>
+      <app-custom-disabled-input [placeholder]="email" inputIcon="envelope-solid"></app-custom-disabled-input>
+      <app-custom-disabled-input [placeholder]="phoneNumber" inputIcon="phone-solid"></app-custom-disabled-input>
+      <app-custom-disabled-input [placeholder]="gender" inputIcon="children-solid"></app-custom-disabled-input>
+      <app-custom-disabled-input [placeholder]="birthDate" inputIcon="cake-candles-solid"></app-custom-disabled-input>
     </div>
     <h2 class="text-l font-bold text-left py-3">Adresse</h2>
-    <div class="grid grid-cols-2 gap-2">
-      <input type="text" class="daisy-input daisy-input-bordered col-span-2" disabled [placeholder]="location" />
-      <input type="text" class="daisy-input daisy-input-bordered col-span-1" disabled [placeholder]="city" />
-      <input type="text" class="daisy-input daisy-input-bordered col-span-1" disabled [placeholder]="postalCode" />
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+      <app-custom-disabled-input class="grid md:col-span-2"[placeholder]="location" inputIcon="location-dot-solid"></app-custom-disabled-input>
+      <app-custom-disabled-input [placeholder]="city" inputIcon="city-solid"></app-custom-disabled-input>
+      <app-custom-disabled-input [placeholder]="postalCode" inputIcon="truck-fast-solid"></app-custom-disabled-input>
     </div>
     <div class="flex justify-around xl:gap-0 gap-2">
       <button class="button__white__blue__border mt-10">Mon compte</button>

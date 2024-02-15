@@ -1,4 +1,12 @@
-<input type="text" class="default__input" [placeholder]="placeholder" [formControl]="control"/>
-<div class="daisy-label" *ngIf="control.invalid && control.dirty">
-  <span class="daisy-label-text-alt text-red-500 text-xs">{{ errorMessage }}</span>
+<div class="relative grid">
+  <input type="text" class="daisy-input rounded-[20px] bg-gray-100 text-primary-blue placeholder-black placeholder-opacity-60 focus:border-transparent focus:outline-0"
+         [placeholder]="placeholder"
+         [formControl]="control"
+         [ngClass]="{ 'border-rose-500 focus:border-inherit': control.invalid && control.dirty }"/>
+  <img
+    [src]="'../../../../assets/images/' + inputIcon + '.svg'"
+    alt="input field logo"
+    class="absolute right-4 top-1/2 transform -translate-y-1/2 w-[16px] h-[16px] opacity-50"
+  />
 </div>
+

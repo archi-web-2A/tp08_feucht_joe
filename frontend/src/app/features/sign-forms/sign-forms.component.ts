@@ -19,6 +19,8 @@ import { User } from "../../core/models/user";
   styleUrl: './sign-forms.component.css'
 })
 export class SignFormsComponent {
+  showSignupFailureMessage = false;
+
   constructor(private router: Router, private userService: UserService) {
   }
 
@@ -44,9 +46,12 @@ export class SignFormsComponent {
   onSubmitSignup() {
     this.markFormGroupDirty(this.signupForm);
     if(this.signupForm.valid) {
+      this.showSignupFailureMessage = false;
       let user = this.convertFormGroupToUser(this.signupForm);
       this.userService.createUser(user);
       this.router.navigate(['/signup-validation']);
+    } else {
+      this.showSignupFailureMessage = true;
     }
   }
 

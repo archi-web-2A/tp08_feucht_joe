@@ -1,13 +1,19 @@
 import { Component } from '@angular/core';
 import {RouterLink} from "@angular/router";
 import { UserService } from "../../../core/services/user.service";
+import {FormsModule} from "@angular/forms";
+import {
+  CustomDisabledInputComponent
+} from "../../../shared/components/custom-disabled-input/custom-disabled-input.component";
 
 
 @Component({
   selector: 'app-signup-validation',
   standalone: true,
   imports: [
-    RouterLink
+    RouterLink,
+    FormsModule,
+    CustomDisabledInputComponent
   ],
   templateUrl: './signup-validation.component.html',
   styleUrl: './signup-validation.component.css'
