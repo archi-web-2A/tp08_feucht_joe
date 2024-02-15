@@ -13,11 +13,13 @@ export class CustomInputComponent {
   @Input() control: FormControl;
   @Input() placeholder: string;
   @Input() inputIcon: string;
+  @Input() inputType: string;
 
   constructor() {
     this.control = new FormControl();
     this.placeholder = '';
     this.inputIcon = '';
+    this.inputType = 'text';
   }
 
 

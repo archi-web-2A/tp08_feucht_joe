@@ -23,7 +23,7 @@
         <p class="text-sm text-center">ou connectez vous avec votre compte</p>
         <form class="flex flex-col gap-3 items-center" [formGroup]="signinForm" (ngSubmit)="onSubmitSignin()">
           <app-custom-input [control]="signinInfo.email" placeholder="Email" inputIcon="envelope-solid"></app-custom-input>
-          <app-custom-input [control]="signinInfo.password" placeholder="Mot de passe" inputIcon="lock-solid"></app-custom-input>
+          <app-custom-input [control]="signinInfo.password" placeholder="Mot de passe" inputIcon="lock-solid" inputType="password"></app-custom-input>
           <div class="flex items-center gap-2">
             <input type="checkbox" class="daisy-checkbox daisy-checkbox-primary [--chkfg:white]" />
             <p class="text-[12px] font-bold">Restez connecté</p>
@@ -62,15 +62,18 @@
             <app-custom-input class="grid sm:col-span-1 col-span-2" [control]="signupInfo.lastName" placeholder="Nom" inputIcon="user-solid"></app-custom-input>
             <app-custom-input class="grid sm:col-span-1 col-span-2" [control]="signupInfo.email" placeholder="Email" inputIcon="envelope-solid"></app-custom-input>
             <app-custom-input class="grid sm:col-span-1 col-span-2" [control]="signupInfo.phoneNumber" placeholder="Numéro de téléphone" inputIcon="phone-solid"></app-custom-input>
-            <select class="daisy-select text-[16px] rounded-[20px] bg-gray-100 text-black text-opacity-60 placeholder-opacity-60 focus:border-transparent focus:outline-none sm:col-span-1 col-span-2" formControlName="gender"
-                    [ngClass]="{ 'border-rose-500': signupForm.controls.gender.invalid && signupForm.controls.gender.dirty }">
-              <option value="" disabled selected>Sexe</option>
-              <option class="text-primary-blue">Homme</option>
-              <option class="text-primary-blue">Femme</option>
+            <select class="duration-300 hover:shadow-md focus:box__shadow daisy-select text-[16px] rounded-[20px] bg-gray-100 placeholder-opacity-60 focus:border-primary-blue focus:outline-none sm:col-span-1 col-span-2" formControlName="gender"
+                    [ngClass]="{
+                      'border-rose-500': signupForm.controls.gender.invalid && signupForm.controls.gender.dirty,
+                      'text-primary-blue': signupForm.controls.gender.valid
+                    }">
+              <option value="" selected disabled>Sexe</option>
+              <option>Homme</option>
+              <option>Femme</option>
             </select>
-            <app-custom-input class="grid sm:col-span-1 col-span-2" [control]="signupInfo.birthDate" placeholder="Date de naissance" inputIcon="cake-candles-solid"></app-custom-input>
-            <app-custom-input class="grid col-span-2" [control]="signupInfo.password" placeholder="Mot de passe" inputIcon="lock-solid"></app-custom-input>
-            <app-custom-input class="grid col-span-2" [control]="signupInfo.passwordConfirmation" placeholder="Confirmer le mot de passe" inputIcon="lock-solid"></app-custom-input>
+            <app-custom-input class="grid sm:col-span-1 col-span-2" [control]="signupInfo.birthDate" placeholder="Date de naissance" inputIcon="cake-candles-solid" inputType="date"></app-custom-input>
+            <app-custom-input class="grid col-span-2" [control]="signupInfo.password" placeholder="Mot de passe" inputIcon="lock-solid" inputType="password"></app-custom-input>
+            <app-custom-input class="grid col-span-2" [control]="signupInfo.passwordConfirmation" placeholder="Confirmer le mot de passe" inputIcon="lock-solid" inputType="password"></app-custom-input>
           </div>
           <h2 class="text-l font-bold text-left self-start">Adresse</h2>
           <div class="grid grid-cols-2 gap-2">
@@ -78,11 +81,11 @@
             <app-custom-input class="grid sm:col-span-1 col-span-2" [control]="signupInfo.city" placeholder="Ville" inputIcon="city-solid"></app-custom-input>
             <app-custom-input class="grid sm:col-span-1 col-span-2" [control]="signupInfo.postalCode" placeholder="Code postal" inputIcon="truck-fast-solid"></app-custom-input>
           </div>
-          <div *ngIf="showSignupFailureMessage" role="alert" class="daisy-alert daisy-alert-error">
+          <div *ngIf="showSignupFailureMessage" role="alert" class="daisy-alert daisy-alert-error animate-slide-in-right transition-transform">
             <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
-            <span>Champ(s) incorrect(s)</span>
+            <span>{{ signupFailureMessage }}</span>
           </div>
           <button class="button__blue">Inscription</button>
         </form>

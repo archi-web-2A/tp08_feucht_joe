@@ -20,6 +20,7 @@ import { User } from "../../core/models/user";
 })
 export class SignFormsComponent {
   showSignupFailureMessage = false;
+  signupFailureMessage = '';
 
   constructor(private router: Router, private userService: UserService) {
   }
@@ -33,26 +34,49 @@ export class SignFormsComponent {
     firstName: new FormControl('', Validators.required),
     lastName: new FormControl('', Validators.required),
     email: new FormControl('', [Validators.required, Validators.email]),
-    phoneNumber: new FormControl('', Validators.required),
+    phoneNumber: new FormControl('', [Validators.required, Validators.pattern("(0|\\+33|0033)[1-9][0-9]{8}")]),
     gender: new FormControl('', Validators.required),
     birthDate: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
     passwordConfirmation: new FormControl('', Validators.required),
     location: new FormControl('', Validators.required),
     city: new FormControl('', Validators.required),
-    postalCode: new FormControl('', Validators.required),
+    postalCode: new FormControl('', [Validators.required, Validators.pattern("[0-9]{5}")]),
   })
+  passwordMatchValidator(): boolean {
+    return this.signupForm.controls.password.value === this.signupForm.controls.passwordConfirmation.value;
+  }
 
   onSubmitSignup() {
     this.markFormGroupDirty(this.signupForm);
-    if(this.signupForm.valid) {
+
+    if (this.signupForm.valid && this.passwordMatchValidator()) {
       this.showSignupFailureMessage = false;
       let user = this.convertFormGroupToUser(this.signupForm);
       this.userService.createUser(user);
       this.router.navigate(['/signup-validation']);
     } else {
       this.showSignupFailureMessage = true;
+      this.signupFailureMessage = this.generateErrorMessage();
     }
+  }
+
+  generateErrorMessage(): string {
+    let failureMessage = 'Champ(s) invalide(s)';
+    const formControls = this.signupForm.controls;
+
+    if (!formControls.phoneNumber.valid) {
+      failureMessage = 'Format du numéro de téléphone invalide';
+    }
+
+    if (!this.passwordMatchValidator()) {
+      failureMessage = 'Les mots de passe ne correspondent pas';
+    }
+
+    if (!formControls.postalCode.valid) {
+      failureMessage = 'Format du code postal invalide (5 chiffres)';
+    }
+    return failureMessage;
   }
 
   convertFormGroupToUser(form: FormGroup): User {
