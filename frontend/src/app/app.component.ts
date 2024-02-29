@@ -13,5 +13,5 @@ import {ProductsComponent} from "./features/products/products.component";
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'tp02_feucht_joe';
+  title = 'tp03_feucht_joe';
 }
