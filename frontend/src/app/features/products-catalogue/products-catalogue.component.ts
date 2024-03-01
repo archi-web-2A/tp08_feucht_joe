@@ -2,11 +2,14 @@ import { Component } from '@angular/core';
 import { ProductService } from "../../core/services/product.service";
 import {Product} from "../../core/models/product";
 import {Observable} from "rxjs";
+import {CommonModule} from "@angular/common";
+import {error} from "@angular/compiler-cli/src/transformers/util";
+import {ProductComponent} from "../product/product.component";
 
 @Component({
   selector: 'app-product-catalogue',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, ProductComponent],
   templateUrl: './products-catalogue.component.html',
   styleUrl: './products-catalogue.component.css'
 })

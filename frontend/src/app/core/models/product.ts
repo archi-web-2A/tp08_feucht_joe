@@ -6,6 +6,7 @@ export interface Product {
   kilometers: number;
   licenceType: string;
   cubicCentimetre: number;
+  color: string;
   motorbikeType: string;
   price: number;
   images: string[];

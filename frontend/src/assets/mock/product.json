@@ -1,3 +1,114 @@
-{
-
-}
+[
+  {
+    "name": "MT07",
+    "description": "Découvrez l'ultime expérience de conduite avec la Yamaha MT07 – une fusion parfaite de puissance audacieuse, de maniabilité agile et de design avant-gardiste.",
+    "brand": "Yamaha",
+    "buildProductionYear": 2021,
+    "kilometers": 4655,
+    "licenceType": "A2",
+    "cubicCentimetre": 689,
+    "color": "Noir/Rouge",
+    "motorbikeType": "Roadster",
+    "price": 6499,
+    "images": [
+      "...",
+      "..."
+    ]
+  },
+  {
+    "name": "TRIDENT 660",
+    "description": "Explorez l'apogée de la conduite avec la Triumph Trident 660 – une harmonie parfaite entre puissance percutante et maniabilité réactive.",
+    "brand": "Triumph",
+    "buildProductionYear": 2022,
+    "kilometers": 1223,
+    "licenceType": "A2",
+    "cubicCentimetre": 660,
+    "color": "Racing Yellow",
+    "motorbikeType": "Roadster",
+    "price": 8795,
+    "images": [
+      "...",
+      "..."
+    ]
+  },
+  {
+    "name": "CBR1000RR R Fireblade",
+    "description": "Plongez dans l'excellence de la conduite avec la Honda CBR1000RR-R Fireblade – une fusion parfaite de puissance époustouflante et d'agilité exceptionnelle.",
+    "brand": "Honda",
+    "buildProductionYear": 2022,
+    "kilometers": 1232,
+    "licenceType": "A",
+    "cubicCentimetre": 999,
+    "color": "Rouge",
+    "motorbikeType": "Sportive",
+    "price": 20099,
+    "images": [
+      "...",
+      "..."
+    ]
+  },
+  {
+    "name": "S1000R",
+    "description": "Découvrez le plaisir ultime de la conduite avec la BMW S1000R - une combinaison parfaite de performance dynamique et de maniabilité supérieure.",
+    "brand": "BMW",
+    "buildProductionYear": 2024,
+    "kilometers": 200,
+    "licenceType": "A",
+    "cubicCentimetre": 999,
+    "color": "Gris",
+    "motorbikeType": "Roadster",
+    "price": 18000,
+    "images": [
+      "...",
+      "..."
+    ]
+  },
+  {
+    "name": "RSV4 1100 Factory",
+    "description": "Explorez les limites de la vitesse avec l'Aprilia RSV4 1100 Factory - une machine de course homologuée pour la route, conçue pour la performance ultime.",
+    "brand": "Aprilia",
+    "buildProductionYear": 2023,
+    "kilometers": 1000,
+    "licenceType": "A",
+    "cubicCentimetre": 1078,
+    "color": "Noir",
+    "motorbikeType": "Sportive",
+    "price": 25000,
+    "images": [
+      "...",
+      "..."
+    ]
+  },
+  {
+    "name": "CRF1100L Africa Twin",
+    "description": "Dominez n'importe quel terrain avec la Honda CRF1100L Africa Twin - une moto d'aventure conçue pour l'exploration sans limites.",
+    "brand": "Honda",
+    "buildProductionYear": 2022,
+    "kilometers": 1500,
+    "licenceType": "A",
+    "cubicCentimetre": 1084,
+    "color": "Blanc",
+    "motorbikeType": "Trail",
+    "price": 19500,
+    "images": [
+      "...",
+      "..."
+    ]
+  },
+  {
+    "name": "1290 Super Adventure R",
+    "description": "Embarquez pour des aventures épiques avec la KTM 1290 Super Adventure R - une moto de tourisme tout-terrain prête à conquérir les terrains les plus difficiles.",
+    "brand": "KTM",
+    "buildProductionYear": 2023,
+    "kilometers": 800,
+    "licenceType": "A",
+    "cubicCentimetre": 1301,
+    "color": "Orange",
+    "motorbikeType": "Trail",
+    "price": 23500,
+    "images": [
+      "...",
+      "..."
+    ]
+  }
+]
