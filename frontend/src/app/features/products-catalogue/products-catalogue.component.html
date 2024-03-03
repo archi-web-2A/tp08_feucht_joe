@@ -1,6 +1,12 @@
-<div class="p-8 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8">
-  <div *ngFor="let product of products$ | async">
-    <app-product [product]="product"></app-product>
+<div class="p-12 flex flex-col gap-4">
+  <h1 class="text-[32px] text-black font-regular mt-10">Catalogue de nos motos</h1>
+  <p class="text-[16px]">Explorez nos dernières trouvailles</p>
+  <app-product-search-bar></app-product-search-bar>
+  <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8">
+    @for (product of products$ | async; track product.name) {
+      <app-product [product]="product"></app-product>
+    }
   </div>
 </div>
+
 
