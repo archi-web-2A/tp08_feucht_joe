@@ -9,7 +9,10 @@
     </a>
     <ng-container *ngIf="!(isSignForms || isSignupValidation)">
       <div class="flex gap-4">
-        <app-product-search-bar></app-product-search-bar>
+        <div class="hidden xl:flex items-center">
+          <app-product-search-bar-header></app-product-search-bar-header>
+        </div>
+
         <div class="hidden xl:block">
           <a routerLink="/sign-forms">
             <button class="button__white">Connexion</button>

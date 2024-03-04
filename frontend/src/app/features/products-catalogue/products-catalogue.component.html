@@ -1,11 +1,63 @@
-<div class="p-12 flex flex-col gap-4">
-  <h1 class="text-[32px] text-black font-regular mt-10">Catalogue de nos motos</h1>
-  <p class="text-[16px]">Explorez nos dernières trouvailles</p>
-  <app-product-search-bar></app-product-search-bar>
-  <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8">
-    @for (product of products$ | async; track product.name) {
+<div class="xl:px-20 xl:pb-20 md:px-12 md:pb-12 px-4 pb-4">
+  <div class="pb-12">
+    <h1 class="text-[32px] text-black font-regular">Catalogue de nos motos</h1>
+    <p class="text-[16px]">Explorez nos dernières trouvailles</p>
+  </div>
+  <div class="flex flex-row gap-4">
+    <div class="left_panel">
+      <div tabindex="0" class="daisy-collapse daisy-collapse-arrow border border-base-300">
+        <input type="checkbox" />
+        <div class="daisy-collapse-title bg-white text-xl font-medium">
+          <div class="flex items-center gap-2">
+            <img src="assets/images/filter-list.svg">
+            <h1 class="font-semibold">Filtres</h1>
+          </div>
+        </div>
+        <div class="daisy-collapse-content bg-white flex flex-col gap-4">
+          <div tabindex="0"  class="daisy-collapse daisy-collapse-arrow border border-base-300">
+            <input type="checkbox" />
+            <div class="daisy-collapse-title bg-white text-l font-medium">
+              <div class="flex items-center gap-2">
+                <h1 class="font-regular">Marques/Modèles</h1>
+              </div>
+            </div>
+            <div class="daisy-collapse-content bg-white flex flex-col gap-4">
+              <app-product-search-bar-catalogue></app-product-search-bar-catalogue>
+              <app-product-search-bar-catalogue></app-product-search-bar-catalogue>
+              <app-product-search-bar-catalogue></app-product-search-bar-catalogue>
+            </div>
+          </div>
+          <div tabindex="0"  class="daisy-collapse daisy-collapse-arrow border border-base-300">
+            <input type="checkbox" />
+            <div class="daisy-collapse-title bg-white text-l font-medium">
+              <div class="flex items-center gap-2">
+                <h1 class="font-regular">Spécifications</h1>
+              </div>
+            </div>
+            <div class="daisy-collapse-content bg-white flex flex-col gap-4">
+              <div class="flex flex-col">
+                <span>Kilométrage (km)</span>
+                <app-multi-range-slider></app-multi-range-slider>
+              </div>
+              <span>Cylindrée</span>
+              <span>Puissance (cv)</span>
+              <span>Année</span>
+            </div>
+          </div>
+          <div class="flex flex-col">
+            <span>Prix (€)</span>
+            <app-multi-range-slider></app-multi-range-slider>
+          </div>
+          <span>Couleur</span>
+
+        </div>
+      </div>
+    </div>
+    <div class="grid lg:grid-cols-2 grid-cols-1 gap-5">
+      @for (product of products$ | async; track product.name) {
       <app-product [product]="product"></app-product>
-    }
+      }
+    </div>
   </div>
 </div>
 

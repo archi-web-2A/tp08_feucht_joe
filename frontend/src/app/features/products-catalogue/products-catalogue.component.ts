@@ -5,12 +5,15 @@ import {Observable} from "rxjs";
 import {CommonModule} from "@angular/common";
 import {error} from "@angular/compiler-cli/src/transformers/util";
 import {ProductComponent} from "../product/product.component";
-import {ProductSearchBarComponent} from "../../shared/components/product-search-bar/product-search-bar.component";
+import {
+  ProductSearchBarCatalogueComponent
+} from "../../shared/components/product-search-bar/product-search-bar-catalogue/product-search-bar-catalogue.component";
+import {MultiRangeSliderComponent} from "../../shared/components/multi-range-slider/multi-range-slider.component";
 
 @Component({
   selector: 'app-product-catalogue',
   standalone: true,
-  imports: [CommonModule, ProductComponent, ProductSearchBarComponent],
+  imports: [CommonModule, ProductComponent, ProductSearchBarCatalogueComponent, MultiRangeSliderComponent],
   templateUrl: './products-catalogue.component.html',
   styleUrl: './products-catalogue.component.css'
 })

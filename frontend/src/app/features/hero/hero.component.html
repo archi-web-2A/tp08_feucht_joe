@@ -7,7 +7,7 @@
     <p class="hero__subtitle">
       Laissez vous séduire par notre large gamme de motos disponibles à l’achat ou à la location.
     </p>
-    <button class="button__blue px-10 mt-10">Explorez</button>
+    <button class="button__blue px-10 mt-10" (click)="scrollToCatalogue()">Explorez</button>
   </div>
   <div class="hero__image-container">
     <div class="hero__image">
@@ -17,5 +17,7 @@
     <div class="hero__image-overlay"></div>
   </div>
 </div>
-<app-product-catalogue></app-product-catalogue>
+<div id="productsCatalogue">
+  <app-product-catalogue></app-product-catalogue>
+</div>
 

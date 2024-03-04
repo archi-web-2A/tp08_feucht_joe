@@ -1,15 +1,23 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {ProductsCatalogueComponent} from "../products-catalogue/products-catalogue.component";
+import {RouterLink} from "@angular/router";
+
 
 @Component({
   selector: 'app-hero',
   standalone: true,
   imports: [
-    ProductsCatalogueComponent
+    ProductsCatalogueComponent,
+    RouterLink,
   ],
   templateUrl: './hero.component.html',
   styleUrl: './hero.component.css'
 })
 export class HeroComponent {
-
+  scrollToCatalogue() {
+    const element = document.getElementById('productsCatalogue');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+    }
+  }
 }

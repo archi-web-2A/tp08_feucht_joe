@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from "@angular/common";
 import {NavigationEnd, Router, RouterLink, RouterLinkActive} from "@angular/router";
-import {ProductSearchBarComponent} from "../product-search-bar/product-search-bar.component";
+import { ProductSearchBarHeaderComponent } from "../product-search-bar/product-search-bar-header/product-search-bar-header.component";
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, RouterLink, RouterLinkActive, ProductSearchBarComponent],
+  imports: [CommonModule, RouterLink, RouterLinkActive, ProductSearchBarHeaderComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
