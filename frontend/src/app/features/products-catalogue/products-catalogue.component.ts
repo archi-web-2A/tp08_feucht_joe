@@ -9,11 +9,14 @@ import {
   ProductSearchBarCatalogueComponent
 } from "../../shared/components/product-search-bar/product-search-bar-catalogue/product-search-bar-catalogue.component";
 import {MultiRangeSliderComponent} from "../../shared/components/multi-range-slider/multi-range-slider.component";
+import {
+  MinMaxProductValuesComponent
+} from "../../shared/components/min-max-product-values/min-max-product-values.component";
 
 @Component({
   selector: 'app-product-catalogue',
   standalone: true,
-  imports: [CommonModule, ProductComponent, ProductSearchBarCatalogueComponent, MultiRangeSliderComponent],
+  imports: [CommonModule, ProductComponent, ProductSearchBarCatalogueComponent, MultiRangeSliderComponent, MinMaxProductValuesComponent],
   templateUrl: './products-catalogue.component.html',
   styleUrl: './products-catalogue.component.css'
 })

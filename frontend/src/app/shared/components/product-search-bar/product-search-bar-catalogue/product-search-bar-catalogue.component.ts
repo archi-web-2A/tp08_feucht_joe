@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {ReactiveFormsModule} from "@angular/forms";
 
 @Component({
@@ -11,5 +11,11 @@ import {ReactiveFormsModule} from "@angular/forms";
   styleUrl: './product-search-bar-catalogue.component.css'
 })
 export class ProductSearchBarCatalogueComponent {
+  @Input() placeholder: string
+  @Input() inputIcon: string
 
+  constructor() {
+    this.placeholder = ''
+    this.inputIcon = ''
+  }
 }

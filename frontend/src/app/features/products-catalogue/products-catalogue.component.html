@@ -6,7 +6,7 @@
   <div class="flex flex-row gap-4">
     <div class="left_panel">
       <div tabindex="0" class="daisy-collapse daisy-collapse-arrow border border-base-300">
-        <input type="checkbox" />
+        <input type="checkbox" checked />
         <div class="daisy-collapse-title bg-white text-xl font-medium">
           <div class="flex items-center gap-2">
             <img src="assets/images/filter-list.svg">
@@ -22,9 +22,9 @@
               </div>
             </div>
             <div class="daisy-collapse-content bg-white flex flex-col gap-4">
-              <app-product-search-bar-catalogue></app-product-search-bar-catalogue>
-              <app-product-search-bar-catalogue></app-product-search-bar-catalogue>
-              <app-product-search-bar-catalogue></app-product-search-bar-catalogue>
+              <app-product-search-bar-catalogue placeholder="Trident 660" inputIcon="motorcycle-solid"></app-product-search-bar-catalogue>
+              <app-product-search-bar-catalogue placeholder="Triumph" inputIcon="honda-11"></app-product-search-bar-catalogue>
+              <app-product-search-bar-catalogue placeholder="Type de moto" inputIcon="type"></app-product-search-bar-catalogue>
             </div>
           </div>
           <div tabindex="0"  class="daisy-collapse daisy-collapse-arrow border border-base-300">
@@ -40,15 +40,18 @@
                 <app-multi-range-slider></app-multi-range-slider>
               </div>
               <span>Cylindrée</span>
+              <app-min-max-product-values></app-min-max-product-values>
               <span>Puissance (cv)</span>
+              <app-min-max-product-values></app-min-max-product-values>
               <span>Année</span>
+              <app-min-max-product-values></app-min-max-product-values>
             </div>
           </div>
           <div class="flex flex-col">
             <span>Prix (€)</span>
             <app-multi-range-slider></app-multi-range-slider>
           </div>
-          <span>Couleur</span>
+          <app-product-search-bar-catalogue placeholder="Couleur" inputIcon="palette-solid"></app-product-search-bar-catalogue>
 
         </div>
       </div>
