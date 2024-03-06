@@ -1,9 +1,93 @@
-<div class="h-72 rounded-2xl bg-slate-100 shadow-xl p-4">
-  <div class="flex flex-col gap-4">
-    <p> {{ product.name }} - {{ product.brand }}</p>
-    <p> {{ product.price }}€</p>
-    <p> {{ product.description }}</p>
+<div class="relative flex h-auto min-w-[445px] items-center hover:translate-y-[-5px] duration-300 cursor-pointer">
+  <div class="relative h-[530px] w-[240px] shadow-xl rounded-2xl bg-[#F1F1F1]">
+    <span class="absolute left-5 top-[20%] transform text-4xl -translate-x-1/2 -rotate-90 font-bold">{{product.brand.toUpperCase()}}</span>
   </div>
-
+  <div class="flex flex-col justify-center absolute right-0 h-[490px] w-[291px] rounded-2xl shadow-xl bg-primary-blue opacity-95">
+    <div class="flex flex-col gap-3 p-4 pl-24 text-white">
+      <div class="flex items-start justify-between">
+        <span class="text-2xl font-bold leading-tight min-h-[60px]">{{ product.name }}</span>
+        <label class="daisy-swap daisy-swap-flip text-xl">
+          <input type="checkbox" />
+          <div class="daisy-swap-on w-[20px] h-[20px]">
+            <img
+              src="/assets/images/heart-solid.svg"
+              alt="heart"
+            >
+          </div>
+          <div class="daisy-swap-off w-[20px] h-[20px]">
+            <img
+              src="/assets/images/heart.svg"
+              alt="heart"
+            >
+          </div>
+        </label>
+      </div>
+      <p class="leading-snug min-h-[180px]">{{ product.description }}</p>
+      <div class="grid grid-cols-2 gap-3">
+        <div class="flex items-center gap-1">
+          <img
+            src="/assets/images/wrench-solid.svg"
+            alt="wrench"
+            width="20"
+            height="20"
+          >
+          <span>{{ product.buildProductionYear }}</span>
+        </div>
+        <div class="flex items-center gap-1">
+          <img
+            src="/assets/images/gauge-solid.svg"
+            alt="gauge"
+            width="20"
+            height="20"
+          >
+          <span>{{ product.kilometers }}km</span>
+        </div>
+        <div class="flex items-center gap-1">
+          <img
+            src="/assets/images/address-card-solid.svg"
+            alt="address"
+            width="20"
+            height="20"
+          >
+          <span>{{ product.licenceType }}</span>
+        </div>
+        <div class="flex items-center gap-1">
+          <img
+            src="/assets/images/engine-motor-svgrepo-com.svg"
+            alt="engine"
+            width="20"
+            height="20"
+          >
+          <span>{{ product.cubicCentimetre }}cm³</span>
+        </div>
+      </div>
+      <div class="flex flex-col gap-3">
+        <div class="flex items-center gap-1">
+          <img
+            src="/assets/images/palette-solid-white.svg"
+            alt="palette"
+            width="20"
+            height="20"
+          >
+          <span>{{ product.color }}</span>
+        </div>
+        <div class="flex items-center gap-1">
+          <img
+            src="/assets/images/motorcycle-solid-white.svg"
+            alt="motorcycle"
+            width="20"
+            height="20"
+          >
+          <span>{{ product.motorbikeType }}</span>
+        </div>
+      </div>
+      <div class="flex items-center justify-between">
+        <span class="text-2xl font-bold"> {{ product.price }}€</span>
+        <p>
+          <button class="daisy-btn bg-white hover:shadow-lg hover:opacity-90 text-[16px] hover:bg-white rounded-[25px] text-primary-blue font-light">Ajouter</button>
+        </p>
+      </div>
+    </div>
+  </div>
+  <img src="assets/images/products/honda/GRAND-PRIX-RED-SP.png" class="absolute -left-4 h-44" />
 </div>
-

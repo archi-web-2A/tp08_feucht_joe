@@ -49,8 +49,8 @@
   },
   {
     "name": "S1000R",
-    "description": "Découvrez le plaisir ultime de la conduite avec la BMW S1000R - une combinaison parfaite de performance dynamique et de maniabilité supérieure.",
-    "brand": "BMW",
+    "description": "Découvrez le plaisir ultime de la conduite avec la BMW S1000R - une combinaison parfaite de performance dynamique.",
+    "brand": "Bmw",
     "buildProductionYear": 2024,
     "kilometers": 200,
     "licenceType": "A",
@@ -98,7 +98,7 @@
   {
     "name": "1290 Super Adventure R",
     "description": "Embarquez pour des aventures épiques avec la KTM 1290 Super Adventure R - une moto de tourisme tout-terrain prête à conquérir les terrains les plus difficiles.",
-    "brand": "KTM",
+    "brand": "Ktm",
     "buildProductionYear": 2023,
     "kilometers": 800,
     "licenceType": "A",

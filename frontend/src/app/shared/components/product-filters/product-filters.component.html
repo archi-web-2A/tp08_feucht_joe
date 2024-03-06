@@ -1,0 +1,78 @@
+<aside class="filters">
+  <div tabindex="0" class="daisy-collapse daisy-collapse-arrow border border-primary-blue">
+    <input type="checkbox" checked />
+    <div class="daisy-collapse-title bg-white text-xl font-medium">
+      <div class="flex items-center gap-2">
+        <img src="assets/images/filter-list.svg">
+        <h1 class="font-bold">Filtres</h1>
+      </div>
+    </div>
+    <div class="daisy-collapse-content bg-white flex flex-col gap-4">
+      <div tabindex="0"  class="daisy-collapse daisy-collapse-arrow border border-primary-blue">
+        <input type="checkbox" />
+        <div class="daisy-collapse-title bg-white text-l">
+          <h1 class="font-regular">Marques/Modèles</h1>
+        </div>
+        <div class="daisy-collapse-content bg-white flex flex-col gap-4">
+          <div class="flex flex-col gap-1">
+            <span>Modèle</span>
+            <app-product-search-bar-catalogue placeholder="Trident 660" inputIcon="motorcycle-solid"></app-product-search-bar-catalogue>
+          </div>
+          <div class="flex flex-col gap-1">
+            <span>Marque</span>
+            <app-product-search-bar-catalogue placeholder="Triumph" inputIcon="honda-11"></app-product-search-bar-catalogue>
+          </div>
+          <div class="flex flex-col gap-1">
+            <span>Type de moto</span>
+            <app-product-search-bar-catalogue placeholder="Roadster" inputIcon="type"></app-product-search-bar-catalogue>
+          </div>
+        </div>
+      </div>
+      <div tabindex="0"  class="daisy-collapse daisy-collapse-arrow border border-primary-blue">
+        <input type="checkbox" />
+        <div class="daisy-collapse-title bg-white text-l font-regular">
+          <h1 class="">Spécifications</h1>
+        </div>
+        <div class="daisy-collapse-content bg-white flex flex-col gap-4">
+          <div class="flex flex-col">
+            <span>Kilométrage (km)</span>
+            <app-multi-range-slider></app-multi-range-slider>
+          </div>
+          <div class="flex flex-col gap-1">
+            <span>Cylindrée</span>
+            <app-min-max-product-values></app-min-max-product-values>
+          </div>
+          <div class="flex flex-col gap-1">
+            <span>Puissance (cv)</span>
+            <app-min-max-product-values></app-min-max-product-values>
+          </div>
+          <div class="flex flex-col gap-1">
+            <span>Année</span>
+            <app-min-max-product-values></app-min-max-product-values>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col">
+        <span>Prix (€)</span>
+        <app-multi-range-slider></app-multi-range-slider>
+      </div>
+      <div class="flex flex-col gap-1">
+        <span>Couleur</span>
+        <app-product-search-bar-catalogue placeholder="Rouge" inputIcon="palette-solid"></app-product-search-bar-catalogue>
+      </div>
+      <div class="flex flex-col gap-1">
+        <span>Type de permis</span>
+        <div class="flex gap-5">
+          <div class="flex items-center gap-1">
+            <input type="checkbox" class="daisy-checkbox daisy-checkbox-primary [--chkfg:white]" />
+            <p class="text-[14px]">A2</p>
+          </div>
+          <div class="flex items-center gap-1">
+            <input type="checkbox" class="daisy-checkbox daisy-checkbox-primary [--chkfg:white]" />
+            <p class="text-[14px]">A</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</aside>

@@ -1,62 +1,16 @@
 <div class="xl:px-20 xl:pb-20 md:px-12 md:pb-12 px-4 pb-4">
-  <div class="pb-12">
+  <div class="pb-6">
     <h1 class="text-[32px] text-black font-regular">Catalogue de nos motos</h1>
-    <p class="text-[16px]">Explorez nos dernières trouvailles</p>
+    <span class="text-[16px]">Explorez nos dernières trouvailles</span>
   </div>
-  <div class="flex flex-row gap-4">
-    <div class="left_panel">
-      <div tabindex="0" class="daisy-collapse daisy-collapse-arrow border border-base-300">
-        <input type="checkbox" checked />
-        <div class="daisy-collapse-title bg-white text-xl font-medium">
-          <div class="flex items-center gap-2">
-            <img src="assets/images/filter-list.svg">
-            <h1 class="font-semibold">Filtres</h1>
-          </div>
-        </div>
-        <div class="daisy-collapse-content bg-white flex flex-col gap-4">
-          <div tabindex="0"  class="daisy-collapse daisy-collapse-arrow border border-base-300">
-            <input type="checkbox" />
-            <div class="daisy-collapse-title bg-white text-l font-medium">
-              <div class="flex items-center gap-2">
-                <h1 class="font-regular">Marques/Modèles</h1>
-              </div>
-            </div>
-            <div class="daisy-collapse-content bg-white flex flex-col gap-4">
-              <app-product-search-bar-catalogue placeholder="Trident 660" inputIcon="motorcycle-solid"></app-product-search-bar-catalogue>
-              <app-product-search-bar-catalogue placeholder="Triumph" inputIcon="honda-11"></app-product-search-bar-catalogue>
-              <app-product-search-bar-catalogue placeholder="Type de moto" inputIcon="type"></app-product-search-bar-catalogue>
-            </div>
-          </div>
-          <div tabindex="0"  class="daisy-collapse daisy-collapse-arrow border border-base-300">
-            <input type="checkbox" />
-            <div class="daisy-collapse-title bg-white text-l font-medium">
-              <div class="flex items-center gap-2">
-                <h1 class="font-regular">Spécifications</h1>
-              </div>
-            </div>
-            <div class="daisy-collapse-content bg-white flex flex-col gap-4">
-              <div class="flex flex-col">
-                <span>Kilométrage (km)</span>
-                <app-multi-range-slider></app-multi-range-slider>
-              </div>
-              <span>Cylindrée</span>
-              <app-min-max-product-values></app-min-max-product-values>
-              <span>Puissance (cv)</span>
-              <app-min-max-product-values></app-min-max-product-values>
-              <span>Année</span>
-              <app-min-max-product-values></app-min-max-product-values>
-            </div>
-          </div>
-          <div class="flex flex-col">
-            <span>Prix (€)</span>
-            <app-multi-range-slider></app-multi-range-slider>
-          </div>
-          <app-product-search-bar-catalogue placeholder="Couleur" inputIcon="palette-solid"></app-product-search-bar-catalogue>
-
-        </div>
-      </div>
+  <div class="mb-1">
+    <span><span class="text-primary-blue text-l font-semibold">{{ (products$ | async)?.length }}</span> motos correspondent à vos critères</span>
+  </div>
+  <div class="flex flex-row gap-10 justify-center">
+    <div class="flex xl:block">
+      <app-product-filters></app-product-filters>
     </div>
-    <div class="grid lg:grid-cols-2 grid-cols-1 gap-5">
+    <div class="grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 gap-16">
       @for (product of products$ | async; track product.name) {
       <app-product [product]="product"></app-product>
       }
