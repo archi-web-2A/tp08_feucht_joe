@@ -1,4 +1,4 @@
-<div class="xl:px-20 xl:pb-20 md:px-12 md:pb-12 px-4 pb-4">
+<div class="xl:px-14 xl:pb-20 md:px-12 md:pb-12 px-4 pb-4">
   <div class="pb-6">
     <h1 class="text-[32px] text-black font-regular">Catalogue de nos motos</h1>
     <span class="text-[16px]">Explorez nos dernières trouvailles</span>
@@ -6,11 +6,11 @@
   <div class="mb-1">
     <span><span class="text-primary-blue text-l font-semibold">{{ (products$ | async)?.length }}</span> motos correspondent à vos critères</span>
   </div>
-  <div class="flex flex-row gap-10 justify-center">
+  <div class="flex lg:flex-row lg:items-start items-center flex-col very-large-screen:gap-10 gap-4">
     <div class="flex xl:block">
       <app-product-filters></app-product-filters>
     </div>
-    <div class="grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 gap-16">
+    <div class="flex-wrap flex very-large-screen:justify-normal justify-center gap-6">
       @for (product of products$ | async; track product.name) {
       <app-product [product]="product"></app-product>
       }

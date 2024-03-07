@@ -3,15 +3,20 @@
     type="text"
     class="header__input hover:box__shadow focus:box__shadow padding-x"
     placeholder="Recherchez votre modèle..."
+    [(ngModel)]="searchInputField"
+    (input)="productFiltering(searchInputField)"
   />
   <img
     src="../../../../../assets/images/magnifying-glass-solid.svg"
     alt="Magnifying glass"
     class="absolute right-4 top-1/2 transform -translate-y-1/2 w-[24px] h-[24px]"
   />
-  <div class="w-[500px] mt-2 p-2 shadow-2xl daisy-menu daisy-dropdown-content z-[1] bg-base-100 rounded-box">
-    <li><a>Item 1</a></li>
-    <li><a>Item 2</a></li>
-  </div>
+  <ng-container *ngIf="filteredProducts && filteredProducts.length > 0">
+    <div class="min-w-[300px] w-max-[500px] mt-2 p-2 shadow-2xl daisy-menu daisy-dropdown-content z-[1] bg-base-100 rounded-box">
+      @for (product of filteredProducts; track product.name) {
+        <li><a>{{ product.brand}} - {{ product.name }}</a></li>
+      }
+    </div>
+  </ng-container>
 </div>
 

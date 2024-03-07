@@ -1,5 +1,5 @@
-<div class="relative flex h-auto min-w-[445px] items-center hover:translate-y-[-5px] duration-300 cursor-pointer">
-  <div class="relative h-[530px] w-[240px] shadow-xl rounded-2xl bg-[#F1F1F1]">
+<div class="relative flex h-auto min-w-[445px] items-center hover:translate-y-[-5px] group duration-200 cursor-pointer">
+  <div class="relative h-[530px] w-[240px] shadow-xl rounded-2xl bg-[#F1F1F1] duration-300 group-hover:border group-hover:border-primary-blue">
     <span class="absolute left-5 top-[20%] transform text-4xl -translate-x-1/2 -rotate-90 font-bold">{{product.brand.toUpperCase()}}</span>
   </div>
   <div class="flex flex-col justify-center absolute right-0 h-[490px] w-[291px] rounded-2xl shadow-xl bg-primary-blue opacity-95">
@@ -89,5 +89,5 @@
       </div>
     </div>
   </div>
-  <img src="assets/images/products/honda/GRAND-PRIX-RED-SP.png" class="absolute -left-4 h-44" />
+  <img [src]="product.images[0]" class="absolute -left-4 scale-90 max-w-[300px] max-h-[200px]" />
 </div>

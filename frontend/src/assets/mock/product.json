@@ -11,7 +11,7 @@
     "motorbikeType": "Roadster",
     "price": 6499,
     "images": [
-      "...",
+      "/assets/images/products/yamaha/mt07.png",
       "..."
     ]
   },
@@ -23,11 +23,11 @@
     "kilometers": 1223,
     "licenceType": "A2",
     "cubicCentimetre": 660,
-    "color": "Racing Yellow",
+    "color": "Silver Ice Diablo Red",
     "motorbikeType": "Roadster",
     "price": 8795,
     "images": [
-      "...",
+      "/assets/images/products/triumph/trident_660.png",
       "..."
     ]
   },
@@ -43,7 +43,7 @@
     "motorbikeType": "Sportive",
     "price": 20099,
     "images": [
-      "...",
+      "/assets/images/products/honda/GRAND-PRIX-RED-SP.png",
       "..."
     ]
   },
@@ -55,11 +55,11 @@
     "kilometers": 200,
     "licenceType": "A",
     "cubicCentimetre": 999,
-    "color": "Gris",
+    "color": "Gris/Rouge",
     "motorbikeType": "Roadster",
     "price": 18000,
     "images": [
-      "...",
+      "/assets/images/products/bmw/a32de2348c00dfba3461dd5e5baaeed8.png",
       "..."
     ]
   },
@@ -75,7 +75,7 @@
     "motorbikeType": "Sportive",
     "price": 25000,
     "images": [
-      "...",
+      "/assets/images/products/aprilia/tech-aprilia-rsv4-1100-factory-2019_hd-removebg-preview.png",
       "..."
     ]
   },
@@ -91,7 +91,7 @@
     "motorbikeType": "Trail",
     "price": 19500,
     "images": [
-      "...",
+      "/assets/images/products/honda/honda-africa-twin-1100-tuning-ecu.png",
       "..."
     ]
   },
@@ -103,11 +103,11 @@
     "kilometers": 800,
     "licenceType": "A",
     "cubicCentimetre": 1301,
-    "color": "Orange",
+    "color": "Orange/Blanc",
     "motorbikeType": "Trail",
     "price": 23500,
     "images": [
-      "...",
+      "/assets/images/products/ktm/S0-ktm-1290-super-adventure-r-2023-le-maxi-trail-pare-pour-l-aventure-739717-removebg-preview.png",
       "..."
     ]
   }
