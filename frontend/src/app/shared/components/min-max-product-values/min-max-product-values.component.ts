@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {FormsModule} from "@angular/forms";
 
 @Component({
@@ -12,4 +12,14 @@ import {FormsModule} from "@angular/forms";
 })
 export class MinMaxProductValuesComponent {
 
+  @Output() inputChange = new EventEmitter<{ minValue: number; maxValue: number }>();
+  minInputValue!: number
+  maxInputValue!: number
+
+  onInputChange() {
+    const minValue = this.minInputValue
+    const maxValue = this.maxInputValue
+
+    this.inputChange.emit({ minValue: minValue, maxValue: maxValue });
+  }
 }

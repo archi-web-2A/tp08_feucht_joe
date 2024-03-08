@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { ProductService } from "../../core/services/product.service";
 import {Product} from "../../core/models/product";
-import {Observable} from "rxjs";
 import {CommonModule} from "@angular/common";
 import {ProductComponent} from "../product/product.component";
 import {ProductFiltersComponent} from "../../shared/components/product-filters/product-filters.component";
@@ -15,9 +13,10 @@ import {ProductFiltersComponent} from "../../shared/components/product-filters/p
 })
 export class ProductsCatalogueComponent {
 
-  products$: Observable<Product[]>;
+  filteredProducts!: Product[]
 
-  constructor(private productService: ProductService) {
-    this.products$ = this.productService.getProducts();
+  onFilteredProductsChange(filteredProducts: Product[]) {
+    this.filteredProducts = filteredProducts;
   }
+
 }

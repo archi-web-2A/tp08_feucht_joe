@@ -1,7 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
 import {MatSliderModule} from '@angular/material/slider';
 import { FormsModule } from "@angular/forms"
-import {max, min} from "rxjs";
 
 @Component({
   selector: 'app-multi-range-slider',
@@ -10,9 +9,27 @@ import {max, min} from "rxjs";
   templateUrl: './multi-range-slider.component.html',
   styleUrl: './multi-range-slider.component.css'
 })
-export class MultiRangeSliderComponent {
-  minValue = 0;
-  maxValue = 10000; // Set the initial maxValue to 1000 or your desired maximum value
-  minSliderValue = 0; // Set the minimum value of the slider
-  maxSliderValue = 10000; // Set the maximum value of the slider
+export class MultiRangeSliderComponent implements OnChanges {
+
+  @Input() maxValue!: number;
+  @Output() inputChange = new EventEmitter<{ minValue: number; maxValue: number }>();
+
+  minInputValue: number = 0;
+  minSliderValue: number = 0;
+  maxInputValue!: number;
+  maxSliderValue!: number;
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['maxValue']) {
+      this.maxInputValue = this.maxValue;
+      this.maxSliderValue = this.maxValue;
+    }
+  }
+
+  onInputChange() {
+    const minValue = this.minInputValue
+    const maxValue = this.maxInputValue
+
+    this.inputChange.emit({ minValue: minValue, maxValue: maxValue });
+  }
 }

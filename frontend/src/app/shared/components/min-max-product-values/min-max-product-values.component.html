@@ -1,6 +1,6 @@
 <div class="flex gap-3 items-center">
-  <input type="number" placeholder="Minimum" class="min_max_input">
+  <input type="number" [(ngModel)]="minInputValue" (input)="onInputChange()" placeholder="Minimum" class="min_max_input">
   <span>-</span>
-  <input type="number" placeholder="Maximum" class="min_max_input">
+  <input type="number" [(ngModel)]="maxInputValue" (input)="onInputChange()" placeholder="Maximum" class="min_max_input">
 </div>
 
