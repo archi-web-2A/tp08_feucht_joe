@@ -11,15 +11,13 @@
     alt="Magnifying glass"
     class="absolute right-4 top-1/2 transform -translate-y-1/2 w-[24px] h-[24px]"
   />
-  <ng-container *ngIf="filteredProducts && filteredProducts.length > 0">
-    <div class="flex min-w-[300px] w-max-[500px] mt-2 p-2 shadow-2xl daisy-menu daisy-dropdown-content z-[1] bg-base-100 rounded-box">
-      @for (product of filteredProducts; track product.name) {
-        <li><a>{{ product.brand}} - {{ product.name }}</a></li>
-      }
-      <div class="flex justify-center gap-1 mt-3">
-        <span><span class="text-primary-blue font-bold">{{ filteredProducts.length }}</span> produits correspondant</span>
-      </div>
+  <div *ngIf="filteredProducts && filteredProducts.length > 0" class="flex min-w-[323px] mt-2 p-2 shadow-2xl daisy-menu daisy-dropdown-content z-[1] bg-base-100 rounded-box">
+    @for (product of filteredProducts; track product.name) {
+      <li><a>{{ product.brand}} - {{ product.name }}</a></li>
+    }
+    <div class="flex justify-center gap-1 mt-3">
+      <span><span class="text-primary-blue font-bold">{{ filteredProducts.length }}</span> produits correspondants</span>
     </div>
-  </ng-container>
+  </div>
 </div>
 
