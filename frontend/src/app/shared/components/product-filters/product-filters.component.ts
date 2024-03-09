@@ -4,7 +4,7 @@ import {MultiRangeSliderComponent} from "../multi-range-slider/multi-range-slide
 import {
   ProductSearchBarCatalogueComponent
 } from "../product-search-bar/product-search-bar-catalogue/product-search-bar-catalogue.component";
-import {combineLatest, startWith} from "rxjs";
+import {combineLatest, map, Observable, startWith} from "rxjs";
 import {Product} from "../../../core/models/product";
 import {ProductService} from "../../../core/services/product.service";
 import { FormBuilder, ReactiveFormsModule } from "@angular/forms";
@@ -23,7 +23,7 @@ import { FormBuilder, ReactiveFormsModule } from "@angular/forms";
 })
 export class ProductFiltersComponent implements OnInit {
 
-  @Output() products$: EventEmitter<Product[]> = new EventEmitter<Product[]>();
+  @Output() products$ = new EventEmitter<Observable<Product[]>>();
 
   filters = this.fb.nonNullable.group({
     name: [''],
@@ -37,12 +37,18 @@ export class ProductFiltersComponent implements OnInit {
     minCubicCentimetre: null,
     maxCubicCentimetre: null,
     minBuildProductionYear: null,
-    maxBuildProductionYear: null
+    maxBuildProductionYear: null,
+    licenseTypeA2: true,
+    licenseTypeA: true
   })
 
   constructor(private productService: ProductService, private fb: FormBuilder) {}
 
   ngOnInit(): void {
+    this.products$.emit(this.getProfiles());
+  }
+
+  getProfiles(): Observable<Product[]> {
     const products$ = this.productService.getProducts();
     const search$ = combineLatest([
       this.filters.controls.name.valueChanges.pipe(startWith('')),
@@ -57,24 +63,32 @@ export class ProductFiltersComponent implements OnInit {
       this.filters.controls.maxCubicCentimetre.valueChanges.pipe(startWith(200000)),
       this.filters.controls.minBuildProductionYear.valueChanges.pipe(startWith(0)),
       this.filters.controls.maxBuildProductionYear.valueChanges.pipe(startWith(200000)),
+      this.filters.controls.licenseTypeA2.valueChanges.pipe(startWith(true)),
+      this.filters.controls.licenseTypeA.valueChanges.pipe(startWith(true)),
     ])
 
-    combineLatest([products$, search$]).subscribe(([products, [name, brand, motorbikeType, color, minKilometers, maxKilometers, minPrice, maxPrice, minCubicCentimetre, maxCubicCentimetre, minBuildProductionYear, maxBuildProductionYear]]) => {
-      const filteredProducts = products.filter(product =>
-        product.name.toLowerCase().includes(name.toLowerCase()) &&
-        product.brand.toLowerCase().includes(brand.toLowerCase()) &&
-        product.motorbikeType.toLowerCase().includes(motorbikeType.toLowerCase()) &&
-        product.color.toLowerCase().includes(color.toLowerCase()) &&
-        (!minKilometers || product.kilometers >= minKilometers) &&
-        (!maxKilometers || product.kilometers <= maxKilometers) &&
-        (!minPrice || product.price >= minPrice) &&
-        (!maxPrice || product.price <= maxPrice) &&
-        (!minCubicCentimetre || product.cubicCentimetre >= minCubicCentimetre) &&
-        (!maxCubicCentimetre || product.cubicCentimetre <= maxCubicCentimetre) &&
-        (!minBuildProductionYear || product.buildProductionYear >= minBuildProductionYear) &&
-        (!maxBuildProductionYear || product.buildProductionYear <= maxBuildProductionYear)
-      );
-      this.products$.emit(filteredProducts);
-    });
+    return combineLatest([products$, search$])
+      .pipe(
+        map(([products, [name, brand, motorbikeType, color, minKilometers, maxKilometers, minPrice, maxPrice, minCubicCentimetre, maxCubicCentimetre, minBuildProductionYear, maxBuildProductionYear, licenseTypeA2, licenseTypeA]]) => products.filter(product => {
+          const isNameMatching = product.name.toLowerCase().includes(name.toLowerCase())
+          const isBrandMatching = product.brand.toLowerCase().includes(brand.toLowerCase())
+          const isMotorbikeTypeMatching = product.motorbikeType.toLowerCase().includes(motorbikeType.toLowerCase())
+          const isColorMatching = product.color.toLowerCase().includes(color.toLowerCase())
+          const isMinKilometersMatching = (!minKilometers || product.kilometers >= minKilometers)
+          const isMaxKilometersMatching = (!maxKilometers || product.kilometers <= maxKilometers)
+          const isMinPriceMatching = (!minPrice || product.price >= minPrice)
+          const isMaxPriceMatching =  (!maxPrice || product.price <= maxPrice)
+          const isMinCubicCentimetreMatching = (!minCubicCentimetre || product.cubicCentimetre >= minCubicCentimetre)
+          const isMaxCubicCentimetreMatching = (!maxCubicCentimetre || product.cubicCentimetre <= maxCubicCentimetre)
+          const isMinBuildProductionYearMatching =  (!minBuildProductionYear || product.buildProductionYear >= minBuildProductionYear)
+          const isMaxBuildProductionYearMatching = (!maxBuildProductionYear || product.buildProductionYear <= maxBuildProductionYear)
+          const isLicenseTypeA2Matching = licenseTypeA2 ? product.licenceType === 'A2' : false;
+          const isLicenseTypeAMatching = licenseTypeA ? product.licenceType === 'A' : false;
+
+          return isNameMatching && isBrandMatching && isMotorbikeTypeMatching && isColorMatching && isMinKilometersMatching &&
+            isMaxKilometersMatching && isMinPriceMatching && isMaxPriceMatching && isMinCubicCentimetreMatching && isMaxCubicCentimetreMatching
+            && isMinBuildProductionYearMatching && isMaxBuildProductionYearMatching && (isLicenseTypeA2Matching || isLicenseTypeAMatching);
+        }))
+      )
   }
 }

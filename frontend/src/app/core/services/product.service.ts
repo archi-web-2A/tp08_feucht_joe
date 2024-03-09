@@ -8,9 +8,7 @@ import { environnement } from "../../../environnements/environnement";
 })
 export class ProductService {
 
-  constructor(private http: HttpClient) {
-    this.getProducts();
-  }
+  constructor(private http: HttpClient) {}
 
   getProducts() {
     return this.http.get<Product[]>(environnement.backendClient);
