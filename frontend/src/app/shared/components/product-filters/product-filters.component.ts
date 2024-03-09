@@ -1,12 +1,13 @@
-import {Component, EventEmitter, OnDestroy, Output} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {MinMaxProductValuesComponent} from "../min-max-product-values/min-max-product-values.component";
 import {MultiRangeSliderComponent} from "../multi-range-slider/multi-range-slider.component";
 import {
   ProductSearchBarCatalogueComponent
 } from "../product-search-bar/product-search-bar-catalogue/product-search-bar-catalogue.component";
-import {Subscription} from "rxjs";
+import {combineLatest, startWith} from "rxjs";
 import {Product} from "../../../core/models/product";
 import {ProductService} from "../../../core/services/product.service";
+import { FormBuilder, ReactiveFormsModule } from "@angular/forms";
 
 @Component({
   selector: 'app-product-filters',
@@ -14,111 +15,66 @@ import {ProductService} from "../../../core/services/product.service";
   imports: [
     MinMaxProductValuesComponent,
     MultiRangeSliderComponent,
-    ProductSearchBarCatalogueComponent
+    ProductSearchBarCatalogueComponent,
+    ReactiveFormsModule
   ],
   templateUrl: './product-filters.component.html',
   styleUrl: './product-filters.component.css'
 })
-export class ProductFiltersComponent implements OnDestroy {
+export class ProductFiltersComponent implements OnInit {
 
-  products: Product[] = []
-  productServiceSubscription: Subscription
-  filteredProducts: Product[] = []
-  maxKilometersSlider!: number
-  maxPriceSlider!: number
+  @Output() products$: EventEmitter<Product[]> = new EventEmitter<Product[]>();
 
-  // Filters
-  model!: string
-  brand!: string
-  type!: string
-  color!: string
-  minKilometers!: number
-  maxKilometers!: number
-  minCubicCentimetre!: number
-  maxCubicCentimetre!: number
-  minBuildProductionYear!: number
-  maxBuildProductionYear!: number
-  minPrice!: number
-  maxPrice!:number
+  filters = this.fb.nonNullable.group({
+    name: [''],
+    brand: [''],
+    motorbikeType: [''],
+    color: [''],
+    minKilometers: null,
+    maxKilometers: null,
+    minPrice: null,
+    maxPrice: null,
+    minCubicCentimetre: null,
+    maxCubicCentimetre: null,
+    minBuildProductionYear: null,
+    maxBuildProductionYear: null
+  })
 
-  @Output() filteredProductsChange = new EventEmitter<Product[]>();
+  constructor(private productService: ProductService, private fb: FormBuilder) {}
 
-  constructor(private productService: ProductService) {
-    this.productServiceSubscription = this.productService.getProducts().subscribe(products => {
-      this.products = products
-      this.filteredProducts = this.products
-      this.maxKilometersSlider = Math.max(...this.products.map(product => product?.kilometers || 0));
-      this.maxPriceSlider = Math.max(...this.products.map(product => product?.price || 0));
-      this.filteredProductsChange.emit(this.filteredProducts);
-    })
-  }
+  ngOnInit(): void {
+    const products$ = this.productService.getProducts();
+    const search$ = combineLatest([
+      this.filters.controls.name.valueChanges.pipe(startWith('')),
+      this.filters.controls.brand.valueChanges.pipe(startWith('')),
+      this.filters.controls.motorbikeType.valueChanges.pipe(startWith('')),
+      this.filters.controls.color.valueChanges.pipe(startWith('')),
+      this.filters.controls.minKilometers.valueChanges.pipe(startWith(0)),
+      this.filters.controls.maxKilometers.valueChanges.pipe(startWith(200000)),
+      this.filters.controls.minPrice.valueChanges.pipe(startWith(0)),
+      this.filters.controls.maxPrice.valueChanges.pipe(startWith(200000)),
+      this.filters.controls.minCubicCentimetre.valueChanges.pipe(startWith(0)),
+      this.filters.controls.maxCubicCentimetre.valueChanges.pipe(startWith(200000)),
+      this.filters.controls.minBuildProductionYear.valueChanges.pipe(startWith(0)),
+      this.filters.controls.maxBuildProductionYear.valueChanges.pipe(startWith(200000)),
+    ])
 
-  onModelChange(newModel: string): void{
-    this.model = newModel
-    this.applyFilters()
-  }
-
-  onBrandChange(newBrand: string): void {
-    this.brand = newBrand
-    this.applyFilters()
-  }
-
-  onTypeChange(newType: string): void {
-    this.type = newType
-    this.applyFilters()
-  }
-
-  onColorChange(newColor: string): void {
-    this.color = newColor
-    this.applyFilters()
-  }
-
-  onKilometersChange(values: { minValue: number; maxValue: number }){
-    this.minKilometers = values.minValue;
-    this.maxKilometers = values.maxValue;
-    this.applyFilters()
-  }
-
-  onPriceChange(values: { minValue: number; maxValue: number }) {
-    this.minPrice = values.minValue
-    this.maxPrice = values.maxValue
-    this.applyFilters()
-  }
-
-  onCubicCentimetreChange(values: { minValue: number; maxValue: number }) {
-    this.minCubicCentimetre = values.minValue
-    this.maxCubicCentimetre = values.maxValue
-    this.applyFilters()
-  }
-
-  onBuildProductionYear(values: { minValue: number; maxValue: number }) {
-    this.minBuildProductionYear = values.minValue
-    this.maxBuildProductionYear = values.maxValue
-    this.applyFilters()
-  }
-
-  applyFilters() {
-    this.filteredProducts = this.products.filter(product =>
-      (!this.model || product.name.toLowerCase().includes(this.model.toLowerCase())) &&
-      (!this.brand || product.brand.toLowerCase().includes(this.brand.toLowerCase())) &&
-      (!this.type || product.motorbikeType.toLowerCase().includes(this.type.toLowerCase())) &&
-      (!this.color || product.color.toLowerCase().includes(this.color.toLowerCase())) &&
-      (!this.minKilometers || product.kilometers >= this.minKilometers) &&
-      (!this.maxKilometers || product.kilometers <= this.maxKilometers) &&
-      (!this.minCubicCentimetre || product.cubicCentimetre >= this.minCubicCentimetre) &&
-      (!this.maxCubicCentimetre || product.cubicCentimetre <= this.maxCubicCentimetre) &&
-      (!this.minBuildProductionYear || product.buildProductionYear >= this.minBuildProductionYear) &&
-      (!this.maxBuildProductionYear || product.buildProductionYear <= this.maxBuildProductionYear) &&
-      (!this.minPrice || product.price >= this.minPrice) &&
-      (!this.maxPrice || product.price <= this.maxPrice)
-    );
-
-    this.filteredProductsChange.emit(this.filteredProducts);
-  }
-
-  ngOnDestroy(): void {
-    if(this.productServiceSubscription) {
-      this.productServiceSubscription.unsubscribe()
-    }
+    combineLatest([products$, search$]).subscribe(([products, [name, brand, motorbikeType, color, minKilometers, maxKilometers, minPrice, maxPrice, minCubicCentimetre, maxCubicCentimetre, minBuildProductionYear, maxBuildProductionYear]]) => {
+      const filteredProducts = products.filter(product =>
+        product.name.toLowerCase().includes(name.toLowerCase()) &&
+        product.brand.toLowerCase().includes(brand.toLowerCase()) &&
+        product.motorbikeType.toLowerCase().includes(motorbikeType.toLowerCase()) &&
+        product.color.toLowerCase().includes(color.toLowerCase()) &&
+        (!minKilometers || product.kilometers >= minKilometers) &&
+        (!maxKilometers || product.kilometers <= maxKilometers) &&
+        (!minPrice || product.price >= minPrice) &&
+        (!maxPrice || product.price <= maxPrice) &&
+        (!minCubicCentimetre || product.cubicCentimetre >= minCubicCentimetre) &&
+        (!maxCubicCentimetre || product.cubicCentimetre <= maxCubicCentimetre) &&
+        (!minBuildProductionYear || product.buildProductionYear >= minBuildProductionYear) &&
+        (!maxBuildProductionYear || product.buildProductionYear <= maxBuildProductionYear)
+      );
+      this.products$.emit(filteredProducts);
+    });
   }
 }

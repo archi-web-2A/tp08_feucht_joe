@@ -13,10 +13,9 @@ import {ProductFiltersComponent} from "../../shared/components/product-filters/p
 })
 export class ProductsCatalogueComponent {
 
-  filteredProducts!: Product[]
+  receivedProducts: Product[] = [];
 
-  onFilteredProductsChange(filteredProducts: Product[]) {
-    this.filteredProducts = filteredProducts;
+  handleFilteredProducts(products: Product[]): void {
+    this.receivedProducts = products;
   }
-
 }

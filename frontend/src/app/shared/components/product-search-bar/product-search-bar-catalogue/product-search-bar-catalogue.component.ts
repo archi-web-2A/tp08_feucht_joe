@@ -1,12 +1,13 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import {Component, Input} from '@angular/core';
+import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 @Component({
   selector: 'app-product-search-bar-catalogue',
   standalone: true,
   imports: [
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   templateUrl: './product-search-bar-catalogue.component.html',
   styleUrl: './product-search-bar-catalogue.component.css'
@@ -14,16 +15,12 @@ import { FormsModule } from '@angular/forms';
 export class ProductSearchBarCatalogueComponent {
   @Input() placeholder: string
   @Input() inputIcon: string
-
-  @Output() inputChange = new EventEmitter<string>();
-  searchInputField!: string
+  @Input() control!: FormControl;
 
   constructor() {
     this.placeholder = ''
     this.inputIcon = ''
   }
 
-  onSearchInputChange(searchInputField: string) {
-    this.inputChange.emit(searchInputField.toLowerCase())
-  }
+
 }

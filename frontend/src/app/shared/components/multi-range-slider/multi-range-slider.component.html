@@ -1,8 +1,8 @@
 <div class="flex flex-row gap-1 items-center">
-  <input type="number" [(ngModel)]="minInputValue" (input)="onInputChange()" class="w-[80px] h-[35px] duration-150 hover:shadow-md focus:box__shadow daisy-input rounded-[10px] bg-gray-100 text-primary-blue placeholder-black placeholder-opacity-60 focus:border-primary-blue focus:outline-0">
+  <input type="number" [(ngModel)]="minInputValue" [formControl]="controlMin" class="w-[80px] h-[35px] duration-150 hover:shadow-md focus:box__shadow daisy-input rounded-[10px] bg-gray-100 text-primary-blue placeholder-black placeholder-opacity-60 focus:border-primary-blue focus:outline-0">
   <mat-slider class="w-[100px]" [min]="minSliderValue" [max]="maxSliderValue">
-    <input matSliderStartThumb (input)="onInputChange()" [(ngModel)]="minInputValue">
-    <input matSliderEndThumb (input)="onInputChange()" [(ngModel)]="maxInputValue">
+    <input matSliderStartThumb [(ngModel)]="minInputValue">
+    <input matSliderEndThumb [(ngModel)]="maxInputValue">
   </mat-slider>
-  <input type="number" [(ngModel)]="maxInputValue" (input)="onInputChange()" class="w-[80px] h-[35px] duration-150 hover:shadow-md focus:box__shadow daisy-input rounded-[10px] bg-gray-100 text-primary-blue placeholder-black placeholder-opacity-60 focus:border-primary-blue focus:outline-0">
+  <input type="number" [(ngModel)]="maxInputValue" [formControl]="controlMax" class="w-[80px] h-[35px] duration-150 hover:shadow-md focus:box__shadow daisy-input rounded-[10px] bg-gray-100 text-primary-blue placeholder-black placeholder-opacity-60 focus:border-primary-blue focus:outline-0">
 </div>
