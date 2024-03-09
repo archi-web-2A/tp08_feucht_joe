@@ -3,7 +3,7 @@ import {Product} from "../../core/models/product";
 import {CommonModule} from "@angular/common";
 import {ProductComponent} from "../product/product.component";
 import {ProductFiltersComponent} from "../../shared/components/product-filters/product-filters.component";
-import {Observable, of} from "rxjs";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-product-catalogue',

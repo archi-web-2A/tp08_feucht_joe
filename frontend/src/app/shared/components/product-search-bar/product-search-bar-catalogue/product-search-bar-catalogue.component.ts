@@ -1,7 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 
-
 @Component({
   selector: 'app-product-search-bar-catalogue',
   standalone: true,
