@@ -20,6 +20,4 @@ export class ProductSearchBarCatalogueComponent {
     this.placeholder = ''
     this.inputIcon = ''
   }
-
-
 }
