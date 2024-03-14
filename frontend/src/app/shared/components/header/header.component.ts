@@ -13,6 +13,7 @@ import { ProductSearchBarHeaderComponent } from "../product-search-bar/product-s
 export class HeaderComponent {
   isMenuOpen = false;
   isSignForms= false;
+  isCards = false;
   isSignupValidation = false;
 
   constructor(private router: Router) {
@@ -28,6 +29,7 @@ export class HeaderComponent {
       this.isMenuOpen = false;
       if (event instanceof NavigationEnd) {
         this.isSignForms = event.url === '/sign-forms';
+        this.isCards = event.url === '/cards';
         this.isSignupValidation = event.url === '/signup-validation';
       }
     });

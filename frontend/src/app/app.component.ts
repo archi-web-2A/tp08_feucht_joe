@@ -4,6 +4,7 @@ import { HeaderComponent } from './shared/components/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { HeroComponent } from './features/hero/hero.component';
 import { ProductComponent } from './features/product/product.component';
+import { CardsModule } from "./shared/modules/cards/cards.module";
 
 @Component({
   selector: 'app-root',
@@ -14,6 +15,7 @@ import { ProductComponent } from './features/product/product.component';
     FooterComponent,
     HeroComponent,
     ProductComponent,
+    CardsModule,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
