@@ -1,4 +1,4 @@
-<div class="xl:px-14 xl:pb-20 md:px-12 md:pb-12 px-4 pb-4">
+<section class="xl:px-14 xl:pb-20 md:px-12 md:pb-12 px-4 pb-4">
   <div class="pb-6">
     <h1 class="text-[32px] text-black font-regular">Catalogue de nos motos</h1>
     <span class="text-[16px]">Explorez nos dernières trouvailles</span>
@@ -10,12 +10,12 @@
     <div class="flex xl:block">
       <app-product-filters (products$)="handleFilteredProducts($event)"></app-product-filters>
     </div>
-    <div class="flex-wrap flex very-large-screen:justify-normal justify-center gap-6">
+    <div class="flex-wrap flex justify-center gap-6">
       @for (product of (filteredProducts$ | async); track product.name) {
       <app-product [product]="product"></app-product>
       }
     </div>
   </div>
-</div>
+</section>
 
 

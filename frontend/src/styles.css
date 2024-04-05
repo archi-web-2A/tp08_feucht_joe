@@ -14,6 +14,10 @@
   @apply max-w-[1440px] mx-auto;
 }
 
+.section-p-m {
+  @apply xl:px-14 xl:pb-20 md:px-12 md:pb-12 px-4 pb-4
+}
+
 .padding {
   @apply sm:px-16 px-8 sm:py-24 py-12;
 }
@@ -40,6 +44,10 @@
 
 .button__white {
   @apply daisy-btn bg-white hover:shadow-lg hover:opacity-90 text-[16px] hover:bg-white rounded-[25px] text-primary-blue font-light px-10
+}
+
+.button__white__icon {
+  @apply daisy-btn bg-white hover:shadow-lg hover:opacity-90 text-[16px] hover:bg-white rounded-[25px] text-primary-blue font-light
 }
 
 .button__white__blue__border {

@@ -15,6 +15,7 @@ export class HeaderComponent {
   isSignForms= false;
   isCards = false;
   isSignupValidation = false;
+  isAccount = false;
 
   constructor(private router: Router) {
     this.checkRoutes();
@@ -31,6 +32,7 @@ export class HeaderComponent {
         this.isSignForms = event.url === '/sign-forms';
         this.isCards = event.url === '/cards';
         this.isSignupValidation = event.url === '/signup-validation';
+        this.isAccount = event.url === '/account';
       }
     });
   }

@@ -20,5 +20,5 @@
 }
 
 .hero__image-overlay {
-  @apply absolute xl:-top-[30%] xl:-right-[80%] xl:h-[100vh] xl:scale-[2] -right-1/4 bg-hero-bg bg-no-repeat -z-10 w-full h-[590px];
+  @apply absolute xl:-top-[30%] xl:-right-[70%] xl:h-[100vh] xl:scale-[2] -right-1/4 bg-hero-bg bg-no-repeat -z-10 w-full h-[590px];
 }
