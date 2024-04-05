@@ -18,5 +18,4 @@ export class ProductShoppingCardComponent {
   delProduct() {
     this.store.dispatch(new DelProduct(this.product))
   }
-
 }
