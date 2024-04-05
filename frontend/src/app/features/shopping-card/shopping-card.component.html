@@ -1,0 +1,27 @@
+<section class="min-h-screen overflow-hidden py-[12rem] section-p-m">
+  <h1 class="font-bold text-xl pb-4">Mon panier</h1>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-start">
+    <div class="col-span-2 rounded-lg shadow-md">
+      @for (product of (shoppingProducts$ | async); track product.name) {
+      <app-product-shopping-card [product]="product"></app-product-shopping-card>
+      }
+    </div>
+    <div class="bg-white rounded-lg shadow-md p-4">
+      <h1 class="font-bold text-xl">Informations sur la commande</h1>
+      <div class="my-4">
+        <label for="promo_code" class="text-sm font-medium text-gray-900">Code promotion</label>
+        <input type="text" id="promo_code" name="promo_code" class="block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+      </div>
+      <div class="my-4">
+        <p class="text-sm font-medium text-gray-900">Coût total de la commande</p>
+        <p class="text-lg font-semibold text-gray-700">{{ shoppingProductsTotalPrice$ | async }}€</p>
+        <div class="daisy-divider"></div>
+        <p class="text-sm font-medium text-gray-900">Nombre d'article(s)</p>
+        <p class="text-lg font-semibold text-gray-700">{{ shoppingProductsLength$ | async }}</p>
+      </div>
+      <a href="https://bitly.ws/3huHP">
+        <button class="w-full button__blue">Continue</button>
+      </a>
+    </div>
+  </div>
+</section>

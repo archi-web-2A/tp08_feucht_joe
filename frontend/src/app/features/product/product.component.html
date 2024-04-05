@@ -83,9 +83,14 @@
       </div>
       <div class="flex items-center justify-between">
         <span class="text-2xl font-bold"> {{ product.price }}€</span>
-        <p>
-          <button class="daisy-btn bg-white hover:shadow-lg hover:opacity-90 text-[16px] hover:bg-white rounded-[25px] text-primary-blue font-light">Ajouter</button>
-        </p>
+        <button (click)="addProduct()" class="button__white__icon">
+          <img
+            src="/assets/images/cart-plus-solid-blue.svg"
+            alt="cart-plus"
+            width="20"
+            height="20"
+          >
+        </button>
       </div>
     </div>
   </div>

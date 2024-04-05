@@ -1,5 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {Product} from "../../core/models/product";
+import {Store} from "@ngxs/store";
+import {AddProduct} from "../../shared/actions/product-action";
 
 @Component({
   selector: 'app-product',
@@ -10,4 +12,10 @@ import {Product} from "../../core/models/product";
 })
 export class ProductComponent {
   @Input() product!: Product;
+
+  constructor(private store: Store){}
+
+  addProduct() {
+    this.store.dispatch(new AddProduct(this.product))
+  }
 }
