@@ -4,7 +4,7 @@ import { HeaderComponent } from './shared/components/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { HeroComponent } from './features/hero/hero.component';
 import { ProductComponent } from './features/product/product.component';
-import { CardsModule } from "./shared/modules/cards/cards.module";
+import { CardsModule } from './shared/modules/cards/cards.module';
 
 @Component({
   selector: 'app-root',
@@ -21,5 +21,5 @@ import { CardsModule } from "./shared/modules/cards/cards.module";
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  title = 'tp05_feucht_joe';
+  title = 'tp06_feucht_joe';
 }
