@@ -14,7 +14,6 @@ export class UserService {
         return this.currentUser;
     }
 
-
     addUser(user: User): void {
         this.users.push(user);
     }
