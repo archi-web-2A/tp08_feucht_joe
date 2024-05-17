@@ -1,7 +1,7 @@
-import {Component, OnDestroy} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ProductService} from "../../../../core/services/product.service";
 import {Product} from "../../../../core/models/product";
-import {Observable, Subscription} from "rxjs";
+import {Observable, Subject, Subscription, catchError, debounceTime, distinctUntilChanged, of, switchMap, tap} from "rxjs";
 import {CommonModule} from "@angular/common";
 import { FormsModule } from '@angular/forms';
 
@@ -13,33 +13,38 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './product-search-bar-header.component.html',
   styleUrl: './product-search-bar-header.component.css'
 })
-export class ProductSearchBarHeaderComponent implements OnDestroy {
-  products$: Observable<Product[]>
-  filteredProducts!: Product[]
-  searchInputField = ''
-  productsSubscription!: Subscription
+export class ProductSearchBarHeaderComponent implements OnInit, OnDestroy {
+  private searchTerms = new Subject<string>();
+  filteredProducts$!: Observable<Product[]>;
+  searchSubscription!: Subscription;
 
-  constructor(private productService: ProductService) {
-    this.products$ = this.productService.getProducts()
+  constructor(private productService: ProductService) {}
+
+  ngOnInit() {
+    this.filteredProducts$ = this.searchTerms.pipe(
+      debounceTime(500),
+      distinctUntilChanged(),
+      switchMap((term: string) => term
+        ? this.productService.searchProducts(term).pipe(
+            tap(products => console.log('Products:', products)), // Produits récupérés tout pipou dans la console :)
+            catchError(() => of<Product[]>([]))
+          )
+        : of<Product[]>([])
+      )
+    );
+
+    this.searchSubscription = this.filteredProducts$.subscribe();
   }
 
-  productFiltering(searchInputField: string): void {
-    if (searchInputField.trim() === '') {
-      this.filteredProducts = []
-      return
-    }
-
-    this.productsSubscription = this.products$.subscribe(products => {
-      this.filteredProducts = products.filter(product => {
-        return product.name.toLowerCase().includes(searchInputField.toLowerCase()) ||
-          product.brand.toLowerCase().includes(searchInputField.toLowerCase())
-      });
-    });
+  search(event: Event): void {
+    const target = event.target as HTMLInputElement;
+    const value = target ? target.value : '';
+    this.searchTerms.next(value);
   }
 
   ngOnDestroy(): void {
-    if (this.productsSubscription) {
-      this.productsSubscription.unsubscribe()
+    if (this.searchSubscription) {
+      this.searchSubscription.unsubscribe();
     }
   }
 }

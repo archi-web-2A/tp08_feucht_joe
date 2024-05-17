@@ -3,21 +3,21 @@
     type="text"
     class="header__input hover:box__shadow focus:box__shadow px-10"
     placeholder="Recherchez un modèle..."
-    [(ngModel)]="searchInputField"
-    (input)="productFiltering(searchInputField)"
+    (input)="search($event)"
   />
   <img
     src="../../../../../assets/images/magnifying-glass-solid.svg"
     alt="Magnifying glass"
     class="absolute right-4 top-1/2 transform -translate-y-1/2 w-[24px] h-[24px]"
   />
-  <div *ngIf="filteredProducts && filteredProducts.length > 0" class="flex min-w-[323px] mt-2 p-2 shadow-2xl daisy-menu daisy-dropdown-content z-[1] bg-base-100 rounded-box">
-    @for (product of filteredProducts; track product.name) {
-      <li><a>{{ product.brand}} - {{ product.name }}</a></li>
-    }
+  <div *ngIf="filteredProducts$ | async as filteredProducts" class="flex min-w-[323px] mt-2 p-2 shadow-2xl daisy-menu daisy-dropdown-content z-[1] bg-base-100 rounded-box">
+    <ul>
+      <li *ngFor="let product of filteredProducts">
+        <a>{{ product.brand }} - {{ product.name }}</a>
+      </li>
+    </ul>
     <div class="flex justify-center gap-1 mt-3">
       <span><span class="text-primary-blue font-bold">{{ filteredProducts.length }}</span> produits correspondants</span>
     </div>
   </div>
 </div>
-
