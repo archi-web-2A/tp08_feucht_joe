@@ -1,17 +1,21 @@
 import { Injectable } from '@angular/core';
 import { User } from "../models/user";
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { environment } from '../../../environnements/environnement';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  private user!: User;
+  
+  constructor(private http: HttpClient) { }
 
-  createUser(user: User) {
-    this.user = user;
+  createUser(user: User): Observable<any> {
+    return this.http.post(environment.backendClient + '/register', user);
   }
 
-  getUser(): User {
-    return this.user;
+  getCurrentUser(): Observable<User> {
+    return this.http.get<User>(environment.backendClient + '/currentUser');
   }
 }

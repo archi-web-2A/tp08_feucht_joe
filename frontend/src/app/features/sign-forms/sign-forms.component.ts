@@ -49,18 +49,26 @@ export class SignFormsComponent {
 
   onSubmitSignup() {
     this.markFormGroupDirty(this.signupForm);
-
+  
     if (this.signupForm.valid && this.passwordMatchValidator()) {
       this.showSignupFailureMessage = false;
       let user = this.convertFormGroupToUser(this.signupForm);
-      this.userService.createUser(user);
-      this.router.navigate(['/signup-validation']);
+      this.userService.createUser(user).subscribe(
+        () => {
+          this.router.navigate(['/signup-validation']);
+        },
+        (error) => {
+          console.log(error);
+          this.showSignupFailureMessage = true;
+          this.signupFailureMessage = 'An error occurred while signing up. Please try again later.';
+        }
+      );
     } else {
       this.showSignupFailureMessage = true;
       this.signupFailureMessage = this.generateErrorMessage();
     }
   }
-
+  
   generateErrorMessage(): string {
     let failureMessage = 'Champ(s) invalide(s)';
     const formControls = this.signupForm.controls;

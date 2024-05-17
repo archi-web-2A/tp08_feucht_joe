@@ -1,4 +1,4 @@
-export const environnement = {
+export const environment = {
   production: false,
-  backendClient: '/assets/mock/product.json'
-}
+  backendClient: 'http://localhost:3000/api'
+};
