@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  backendClient: 'http://localhost:3000/api'
+  backendClient: 'http://tp06-feucht-joe-backend.onrender.com/api'
 };
