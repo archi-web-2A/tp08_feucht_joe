@@ -1,8 +1,8 @@
 {
-    "/api/*": {
-    "target": "https://tp06-feucht-joe-backend.onrender.com//",
+  "/api/*": {
+    "target": "https://tp07-feucht-joe-backend.onrender.com//",
     "secure": false,
     "logLevel": "debug",
     "changeOrigin": true
-    }
+  }
 }
